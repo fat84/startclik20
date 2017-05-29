@@ -42,7 +42,22 @@ return [
     */
 
     'disks' => [
-
+        'material' => [
+            'driver' => 'local',
+            'root' => public_path('archivos/materialapoyo'),
+        ],
+        'img' => [
+            'driver' => 'local',
+            'root' => public_path('img/usuario'),
+        ],
+        'video' => [
+            'driver' => 'local',
+            'root' => public_path('video/curso'),
+        ],
+        'img2' => [
+            'driver' => 'local',
+            'root' => public_path('img/modulo'),
+        ],
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

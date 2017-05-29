@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ciudad;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect('dashboard');
+    }
+    /*
+* Funcion mostrar ciudad, dependiendo del departamento*/
+    public function buscar_ciudades($departamento_id)
+    {
+        return \Response::json(Ciudad::where('departamento_id', '=', $departamento_id)->get(['nombre', 'id']));
     }
 }
