@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.app')
 @section('script')
     <script src="{{asset('js/quiz.js')}}"></script>
 @stop

@@ -12,16 +12,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="favicon.png" rel="shortcut icon">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="../fast.fonts.net/cssapi/175a63a1-3f26-476a-ab32-4e21cbdb8be2.css" rel="stylesheet" type="text/css">
-    <link href="bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
-    <link href="bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="bower_components/dropzone/dist/dropzone.css" rel="stylesheet">
-    <link href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
-    <link href="bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
-    <link href="css/mainbfdf.css?version=2.3" rel="stylesheet">
-    <link href="js/sweetalert.css" rel="stylesheet">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!--  <link href="{{asset('fast.fonts.net/cssapi/175a63a1-3f26-476a-ab32-4e21cbdb8be2.css')}}" rel="stylesheet" type="text/css">
+    --><link href="{{asset('bower_components/select2/dist/css/select2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+    <link href="{{asset('bower_components/dropzone/dist/dropzone.css')}}" rel="stylesheet">
+    <link href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/mainbfdf.css?version=2.3')}}" rel="stylesheet">
+    <link href="{{asset('js/sweetalert.css')}}" rel="stylesheet">
+    <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
     <!-- Material Design Icons  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -29,7 +30,7 @@
 <div class="all-wrapper menu-side with-side-panel">
     <div class="layout-w">
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
-            <div class="mm-logo-buttons-w"><a class="mm-logo" href="/home"><img src="img/logo-start.png" style="width: 200px"><span>Clean Admin</span></a>
+            <div class="mm-logo-buttons-w"><a class="mm-logo" href="/home"><img src="{{asset('img/logo-start.png')}}" style="width: 200px"><span>Clean Admin</span></a>
                 <div class="mm-buttons">
                     <div class="content-panel-open">
                         <div class="os-icon os-icon-grid-circles"></div>
@@ -41,7 +42,7 @@
             </div>
             <div class="menu-and-user">
                 <div class="logged-user-w">
-                    <div class="avatar-w"><img alt="" src="img/avatar1.jpg"></div>
+                    <div class="avatar-w"><img alt="" src="{{asset('img/avatar1.jpg')}}"></div>
                     <div class="logged-user-info-w">
                         <div class="logged-user-name">Maria Gomez</div>
                         <div class="logged-user-role">Administrator</div>
@@ -161,7 +162,7 @@
         </div>
 
         <div class="desktop-menu menu-side-w menu-activated-on-click">
-            <div class="logo-w"><a class="logo" href="{{url('/')}}"><img src="img/logo-start.png" style="width: 200px"><span></span></a>
+            <div class="logo-w"><a class="logo" href="{{url('/')}}"><img src="{{asset('img/logo-start.png')}}" style="width: 200px"><span></span></a>
             </div>
             <div class="menu-and-user">
                 <div class="logged-user-w">
@@ -309,25 +310,77 @@
             <div class="content-i">
                 @yield('content')
 
+
+
+
+
+
+                <div class="floated-chat-btn"><i class="os-icon os-icon-mail-07"></i><span>Chat</span></div>
+                <div class="floated-chat-w">
+                    <div class="floated-chat-i">
+                        <div class="chat-close"><i class="os-icon os-icon-close"></i></div>
+                        <div class="chat-head">
+                            <div class="user-w with-status status-green">
+                                <div class="user-avatar-w">
+                                    <div class="user-avatar"><img alt="" src="{{asset('img/avatar1.jpg')}}"></div>
+                                </div>
+                                <div class="user-name"><h6 class="user-title">Juan Carlos</h6>
+                                    <div class="user-role">Soprte</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="message">
+                                <div class="message-content">¿Hola, como puedo ayudarte?</div>
+                            </div>
+                            <div class="date-break">Mon 10:20am</div>
+                            <div class="message">
+                                <div class="message-content">Hola, mi nombre es Mike, voy a estar encantados de ayudarle
+                                </div>
+                            </div>
+                            <div class="message self">
+                                <div class="message-content">Hola, He intentado ordenar este curso y me sigue mostrando el código de error.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-controls"><input class="message-input"
+                                                          placeholder="Escribir mensaje..." type="text">
+                            <div class="chat-extra"><a href="#"><span class="extra-tooltip">Attach Document</span><i
+                                            class="os-icon os-icon-documents-07"></i></a><a href="#"><span
+                                            class="extra-tooltip">Insert Photo</span><i
+                                            class="os-icon os-icon-others-29"></i></a><a href="#"><span
+                                            class="extra-tooltip">Upload Video</span><i
+                                            class="os-icon os-icon-ui-51"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/moment/moment.js"></script>
-<script src="bower_components/chart.js/dist/Chart.min.js"></script>
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<script src="bower_components/ckeditor/ckeditor.js"></script>
-<script src="bower_components/bootstrap-validator/dist/validator.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="bower_components/dropzone/dist/dropzone.js"></script>
-<script src="bower_components/editable-table/mindmup-editabletable.js"></script>
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
-<script src="js/mainbfdf.js?version=2.3"></script>
-<script src="js/sweetalert.min.js"></script>
+<script src="{{asset('bower_components/moment/moment.js')}}"></script>
+<script src="{{asset('bower_components/chart.js/dist/Chart.min.js')}}"></script>
+<script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{asset('bower_components/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap-validator/dist/validator.min.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('bower_components/dropzone/dist/dropzone.js')}}"></script>
+<script src="{{asset('bower_components/editable-table/mindmup-editabletable.js')}}"></script>
+<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+<script src="{{asset('bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js')}}"></script>
+<script src="{{asset('js/mainbfdf.js?version=2.3')}}"></script>
+<script src="{{asset('js/sweetalert.min.js')}}"></script>
 </body>
 <!-- Mirrored from light.pinsupreme.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 May 2017 23:57:06 GMT -->
 </html>

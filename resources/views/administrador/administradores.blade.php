@@ -1,4 +1,4 @@
-@extends('layouts.principal')
+@extends('layouts.app')
 @section('content')
     <div class="mdk-drawer-layout__content">
         <div class="container-fluid">
@@ -108,7 +108,7 @@
                                         <div></div>
                                     </div>
                                 </div>
-                                {!! Form::close() !!}
+                              
 
 
 

@@ -46,8 +46,8 @@
             </button> <!-- end navbar-toggle -->
 
             <a class="navbar-brand" href="index.html">
-                <img src="images/logo_startclik.png" alt="SoftEase Logo"  class="light-logo" style="width: 190px;height:70px;margin-top: -10px">
-                <img src="images/logo_startclik.png" alt="SoftEase Logo"  class="dark-logo" style="width: 190px;height:70px;margin-top: -10px">
+                <img src="img/logo_startclik.png" alt="SoftEase Logo"  class="light-logo" style="width: 190px;height:70px;margin-top: -10px">
+                <img src="img/logo_startclik.png" alt="SoftEase Logo"  class="dark-logo" style="width: 190px;height:70px;margin-top: -10px">
                <!-- <img src="images/light-logo.svg" alt="SoftEase Logo" class="light-logo">
                 <img src="images/dark-logo.svg" alt="SoftEase Logo" class="dark-logo">-->
             </a> <!-- end navbar-brand -->
