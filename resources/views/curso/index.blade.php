@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mdk-drawer-layout__content">
-
-
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="app/public/">Inicio</a></li>
-            <li class="breadcrumb-item active">Cursos</li>
-        </ol>
+    @if($message=Session::has('message'))
+        <script>
+            $( document ).ready(function() {
+                swal(
+                    'En hora buena!',
+                    '{{Session::get('message')}}',
+                    'success'
+                )});
+        </script>
+    @endif
+    <div class="element-wrapper"><h6 class="element-header">Creación de Empresas</h6>
+        <div class="element-box">
         <h1 class="page-heading h2">CURSOS</h1>
         <div class="row">
             <div class="col-md-12">
@@ -29,8 +34,9 @@
                 <!-- Lessons -->
                 <div>
                     <br>
-                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
+                    <div class="table-responsive">
+                        <table id="dataTable2" class="table table-striped table-lightfont" cellspacing="0" width="100%">
+                            <thead>
                         <tr>
                             <th>Curso</th>
                             <th>Categoria</th>
@@ -79,6 +85,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -86,6 +93,7 @@
         </div>
 
 
+    </div>
     </div>
 
 

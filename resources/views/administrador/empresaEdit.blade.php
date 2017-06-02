@@ -1,27 +1,23 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mdk-drawer-layout__content">
-        <div class="container-fluid">
-            <div class="container">
-            
-
-                <!--   <ol class="breadcrumb">
-                       <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
-                       <li class="breadcrumb-item active">Edit Account</li>
-                   </ol>-->
-                @if($message=Session::has('message'))
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                        {{Session::get('message')}}
-                    </div>
-                @endif
+    @if($message=Session::has('message'))
+        <script>
+            $( document ).ready(function() {
+                swal(
+                    'En hora buena!',
+                    '{{Session::get('message')}}',
+                    'success'
+                )});
+        </script>
+    @endif
+    <div class="element-wrapper"><h6 class="element-header">Edición de empresa</h6>
+        <div class="element-box">
                 <div class="row">
                     <div class="col-md-12">
 
                         <div class="card">
                             <div class="card-block">
-                                Editar Administrador
+                                Editar Empresa
                             </div>
                         </div>
                     </div>
@@ -42,18 +38,12 @@
                                 @endif
                                 <div class="col-lg-6">
                                     <fieldset class="form-group">
-                                        <label for="exampleInputEmail1">Nombres</label>
-                                        {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombres']) !!}
-                                    </fieldset>
-                                    <fieldset class="form-group">
-                                        <label for="exampleInputEmail1">Apellidos</label>
-                                        {!! Form::text('apellidos',null,['class'=>'form-control','placeholder'=>'Apellidos']) !!}
+                                        <label for="exampleInputEmail1">Razón social</label>
+                                        {!! Form::text('razon_social',null,['class'=>'form-control','placeholder'=>'Razon social']) !!}
                                     </fieldset>
                                     <div class="form-group">
                                         <label>Tipo Documento</label>
                                         {!! Form::select('tipo_documento', [
-                                          'Cedula ciudadania' => 'Cedula ciudadania',
-                                          'Cedula extranjera' => 'Cedula extranjera',
                                           'Nit' => 'Nit',],null,['class' => 'form-control']
                                                               ) !!}
                                     </div>
@@ -90,5 +80,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @stop

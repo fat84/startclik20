@@ -1,18 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mdk-drawer-layout__content">
-
-
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{url('app/public/')}}"">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="{{url('curso')}}">Cursos</a></li>
-            <li class="breadcrumb-item active">Perfil Curso</li>
-        </ol>
+    @if($message=Session::has('message'))
+        <script>
+            $( document ).ready(function() {
+                swal(
+                    'En hora buena!',
+                    '{{Session::get('message')}}',
+                    'success'
+                )});
+        </script>
+    @endif
+    <div class="element-wrapper"><h6 class="element-header">Perfil de curso</h6>
+        <div class="element-box">
 
         <div class="media">
             <div class="media-body">
-                <h1 class="page-heading h2">
+                <h1 class="page-heading h2" style="text-transform: uppercase">
                     {{$curso->nombre}}
                 </h1>
             </div>
@@ -154,5 +158,5 @@
 
     </div>
 
-
+    </div>
 @stop

@@ -18,7 +18,8 @@ class QuizController extends Controller
      */
     public function index()
     {
-
+        $quiz = Quiz_leccion::all();
+        return view('quiz.quiz',compact('quiz'));
     }
 
     /**

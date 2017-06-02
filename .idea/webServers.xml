@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1453c3c9-0c80-4a83-a3ca-6b194ddba44d" name="startclik" url="http://ftp.startclik.com">
+        <fileTransfer host="ftp.startclik.com" port="21" rootFolder="/app">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

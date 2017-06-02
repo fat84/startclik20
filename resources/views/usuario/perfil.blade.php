@@ -12,9 +12,9 @@
         </script>
     @endif
 
-       <div class="content-box">
+
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
                 <div class="element-wrapper"><h6 class="element-header">Datos de perfil </h6>
 
                     <div class="element-box">
@@ -118,21 +118,12 @@
                                 <a href="{{url('seguridad')}}">Cambiar contraseña</a>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>
         </div>
 
-
-
-
-
-    </div>
-
-
-    <div class="content-panel">
+    <!--<div class="content-panel">
         <div class="content-panel-close"><i class="os-icon os-icon-close"></i></div>
         <div class="element-wrapper"><h6 class="element-header">Cursos destacados</h6>
             <div class="element-box-tp">
@@ -168,6 +159,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
+
+
+
 
 @stop

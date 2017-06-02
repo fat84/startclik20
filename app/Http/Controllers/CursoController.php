@@ -10,9 +10,6 @@ use App\Modulo;
 use App\Order;
 use App\OrderItem;
 use App\User;
-use DevDojo\Chatter\Models\Category;
-use DevDojo\Chatter\Models\Discussion;
-use DevDojo\Chatter\Models\Post;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -85,7 +82,7 @@ class CursoController extends Controller
     {
 
 
-        $categoria_foro = new Category;
+       /* $categoria_foro = new Category;
         $categoria_foro->name = $request->nombre;
         $categoria_foro->slug = str_replace(' ', '-', $request->nombre);
         $categoria_foro->color = '#9B59B6';
@@ -103,7 +100,7 @@ class CursoController extends Controller
         $post_foro->user_id = Auth::user()->id;
         $post_foro->body = '<h1>Bienvenido al foro del curso '.$request->nombre.'</h1>';
         $post_foro->save();
-
+*/
         $curso = new Curso();
         $curso->nombre = $request->nombre;
         $curso->categoria_id = $request->categoria_id;
@@ -128,7 +125,7 @@ class CursoController extends Controller
         }
         $curso->precio = $request->precio;
         $curso->empresa_id = $request->empresa_id;
-        $curso->foro_id = $discusion_foro->id;
+       // $curso->foro_id = $discusion_foro->id;
         $curso->save();
         return redirect('curso')->with('message','Curso creado correctamente');
 

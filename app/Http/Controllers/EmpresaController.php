@@ -125,6 +125,7 @@ class EmpresaController extends Controller
         //$administador->fill($request->all());
         $empresa->name = $request->name;
         $empresa->apellidos = $request->apellidos;
+        $empresa->razon_social = $request->razon_social;
         $empresa->tipo_documento = $request->tipo_documento;
         $empresa->documento = $request->documento;
         $empresa->direccion = $request->direccion;
