@@ -74,7 +74,7 @@ class ModuloController extends Controller
             $modulo->imagen = $file_route;
         }
         $modulo->save();
-        return redirect('modulo');
+        return redirect('modulo')->with('message','Modulo creado correctamente');
 
     }
 
@@ -135,7 +135,7 @@ class ModuloController extends Controller
         }
         $modulo->save();
 
-        return redirect('modulo');
+        return redirect('modulo')->with('message','Modulo actualizado correctamente');
     }
 
     /**
@@ -151,7 +151,7 @@ class ModuloController extends Controller
         $modulo->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the nerd!');
+        Session::flash('message', 'Modulo eliminado correctamente!');
         return Redirect::to('modulo');
     }
 

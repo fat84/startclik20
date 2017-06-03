@@ -41,7 +41,7 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        $quiz = new Quiz;
+        $quiz = new Quiz_leccion;
         $quiz->titulo = $request->titulo;
         $quiz->leccion_id = $request->leccion_id;
 
@@ -74,7 +74,7 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::find($id);
+        $quiz = Quiz_leccion::find($id);
         $lecciones = Leccion::all();
         return view('quiz.quizEdit',compact('quiz','lecciones'));
     }
@@ -88,7 +88,7 @@ class QuizController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

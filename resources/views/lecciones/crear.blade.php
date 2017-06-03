@@ -10,11 +10,7 @@
                     {{Session::get('message')}}
                 </div>
             @endif
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-                <li class="breadcrumb-item"><a href="materia">Leccion</a></li>
-                <li class="breadcrumb-item active">Crear leccion</li>
-            </ol>
+
 
             <div class="media">
                 <div class="media-body">

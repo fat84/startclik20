@@ -9,10 +9,16 @@
                     {{Session::get('message')}}
                 </div>
             @endif
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{url('app/public/')}}">Inicio</a></li>
-                <li class="breadcrumb-item active">Lecciones</li>
-            </ol>
+                @if($message=Session::has('message'))
+                    <script>
+                        $( document ).ready(function() {
+                            swal(
+                                'En hora buena!',
+                                '{{Session::get('message')}}',
+                                'success'
+                            )});
+                    </script>
+                @endif
             <h1 class="page-heading h2">Lecciones</h1>
             <div class="row">
                 <div class="col-md-12">
@@ -30,7 +36,8 @@
                     <div>
 
                         <br>
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <div class="table-responsive">
+                            <table id="dataTable2" class="table table-striped table-lightfont" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <th>Nombre dela Leccion</th>
@@ -67,6 +74,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        </div>
                         <div class="clearfix"></div>
                     </div>
                 </div>

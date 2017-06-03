@@ -24,6 +24,7 @@
     <link href="{{asset('bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/mainbfdf.css?version=2.3')}}" rel="stylesheet">
     <link href="{{asset('js/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{asset('summernote/summernote.css')}}" rel="stylesheet">
     <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- Material Design Icons  -->
@@ -357,6 +358,8 @@
 
 <script src="{{asset('js/mainbfdf.js?version=2.3')}}"></script>
 <script src="{{asset('js/sweetalert.min.js')}}"></script>
+<script src="{{asset('js/quiz.js')}}"></script>
+<script src="{{asset('summernote/summernote.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
 </body>

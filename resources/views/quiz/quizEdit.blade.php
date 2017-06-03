@@ -1,33 +1,35 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mdk-drawer-layout__content">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{url('app/public/')}}"">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="{{url('quiz')}}">Quiz Editar</a></li>
-            <li class="breadcrumb-item active">Quiz Edición</li>
-        </ol>
-    </div>
-    <h1 class="page-heading h2">Ascenso militar</h1>
+
+    @if($message=Session::has('message'))
+        <script>
+            $( document ).ready(function() {
+                swal(
+                    'En hora buena!',
+                    '{{Session::get('message')}}',
+                    'success'
+                )});
+        </script>
+    @endif
+    <h1 class="page-heading h2">Lección: {{$quiz->leccion->titulo}}</h1>
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">Cosas basicas</h4>
-        </div>
         <div class="card-block">
-            <form action="#">
+            <form action="{{url('quiz_leccion_actualizar/'.$quiz->id)}}" method="post">
+                {{ csrf_field() }}
                 <div class="form-group row">
                     <label for="course_title" class="col-sm-3 col-form-label">Quiz Titulo:</label>
                     <div class="col-sm-9 col-md-4">
                         <div class="input-group">
                             <span class="input-group-addon" id="sizing-addon2">#</span>
-                            <input type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon2" value="{{$quiz->titulo}}">
+                            <input required type="text" name="titulo" class="form-control" placeholder="Title" aria-describedby="sizing-addon2" value="{{$quiz->titulo}}">
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="course_title" class="col-sm-3 col-form-label">Materia:</label>
                     <div class="col-sm-9 col-md-4">
-                        <select class="custom-select form-control">
-                            <option></option>
+                        <select class="custom-select form-control" name="leccion">
+                            <option selected value="{{$quiz->leccion->id}}">{{$quiz->leccion->titulo}}</option>
                             @foreach($lecciones as $leccione)
                                 <option value="{{$leccione->id}}">{{$leccione->titulo}}</option>
                             @endforeach
@@ -38,33 +40,22 @@
                 <div class="form-group row">
                     <label for="course_title" class="col-sm-3 col-form-label">Quiz Imagen:</label>
                     <div class="col-sm-9 col-md-4">
-                        <p><img src="assets/images/vuejs.png" alt="" width="150" class="rounded"></p>
-                        <label class="custom-file">
-                            <input type="file" id="file">
-                            <span class="custom-file-control"></span>
-                        </label>
+                        <p><img src="{{asset('img/usuario/'.$quiz->imagen)}}" alt="" width="150" class="rounded"></p>
                     </div>
                 </div>
-               <!-- <div class="form-group row">
-                    <label for="time_toggle" class="col-sm-3 col-form-label">Timeframe</label>
-                    <div class="col-sm-9">
-                        <div class="switch">
-                            <input id="cmn-toggle" class="switch-toggle switch-toggle-round" type="checkbox" checked>
-                            <label for="cmn-toggle"></label>
-                        </div>
-                        <div class="form-inline">
-                            <div class="form-group">
-                                <input type="text" class="form-control text-xs-center" value="4" style="width:50px;">
-                            </div>
-                            <div class="form-group">
-                                <select class="custom-select">
-                                    <option value="hour" selected>Hours</option>
-                                    <option value="minutes">Minutes</option>
-                                </select>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <label for="course_title" class="col-sm-3 col-form-label">Nueva imagen:</label>
+                    <div class="col-sm-9 col-md-4">
+                    <input type="file" placeholder="Cambiar imagen" class="form-control" name="imagen">
                     </div>
-                </div>-->
+                </div>
+                <div class="form-group">
+                    <label for="course_title" class="col-sm-3 col-form-label">Score:</label>
+                    <div class="col-sm-9 col-md-4">
+                        <input type="number" required placeholder="Score del curso" value="{{$quiz->score}}" class="form-control" name="score">
+                    </div>
+                </div>
+                <button type="submit" class=" btn btn-success">Actualizar quiz</button>
             </form>
         </div>
     </div>
