@@ -3,13 +3,16 @@
     <script src="{{asset('js/quiz.js')}}"></script>
 @stop
 @section('content')
-    <div class="mdk-drawer-layout__content">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{url('app/public/')}}"">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="{{url('quiz')}}">Quiz Editar</a></li>
-            <li class="breadcrumb-item active">Quiz Edición</li>
-        </ol>
-    </div>
+    @if($message=Session::has('message'))
+        <script>
+            $( document ).ready(function() {
+                swal(
+                    'En hora buena!',
+                    '{{Session::get('message')}}',
+                    'success'
+                )});
+        </script>
+    @endif
     @if($message=Session::has('message'))
         <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span

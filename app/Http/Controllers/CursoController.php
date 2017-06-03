@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Curso;
+use App\Foro;
 use App\Http\Requests\CursoRequest;
 use App\MaterialCurso;
 use App\Modulo;
@@ -101,10 +102,15 @@ class CursoController extends Controller
         $post_foro->body = '<h1>Bienvenido al foro del curso '.$request->nombre.'</h1>';
         $post_foro->save();
 */
+
+
+
         $curso = new Curso();
         $curso->nombre = $request->nombre;
         $curso->categoria_id = $request->categoria_id;
         $curso->descripcion = $request->descripcion;
+
+
 
         //Codigo para guardar las imagenes
         if ($request->file('imagen') == '') {
@@ -127,6 +133,14 @@ class CursoController extends Controller
         $curso->empresa_id = $request->empresa_id;
        // $curso->foro_id = $discusion_foro->id;
         $curso->save();
+
+        $foro = new Foro;
+        $foro->titulo = $request->nombre;
+        $foro->curso_id = $curso->id;
+        $foro->user_id = Auth::user()->id;
+        $foro->slug = str_replace(' ', '-', $request->nombre);
+        $foro->save();
+
         return redirect('curso')->with('message','Curso creado correctamente');
 
     }

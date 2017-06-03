@@ -8,12 +8,17 @@
                 {{Session::get('message')}}
             </div>
         @endif
+            @if($message=Session::has('message'))
+                <script>
+                    $( document ).ready(function() {
+                        swal(
+                            'En hora buena!',
+                            '{{Session::get('message')}}',
+                            'success'
+                        )});
+                </script>
+            @endif
 
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href={{url('app/public/')}}"">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="{{url('quiz')}}">Quiz leccion</a></li>
-            <li class="breadcrumb-item active">Quizes</li>
-        </ol>
 
         <div class="media">
             <div class="media-body media-middle">

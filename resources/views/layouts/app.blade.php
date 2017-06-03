@@ -237,7 +237,7 @@
                             <li><a href="{{url('modulo')}}">Diseño de modulos</a></li>
                             <li><a href="{{url('materia')}}">Diseño de materias</a></li>
                             <li><a href="{{url('leccion')}}">Diseño de lecciones</a></li>
-                            <li><a href="{{url('quiz')}}">Diseño de quiz</a></li>
+                            <li><a href="{{url('quiz_leccion')}}">Diseño de quiz</a></li>
                         </ul>
                     </li>
                     @endif

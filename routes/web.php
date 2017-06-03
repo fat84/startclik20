@@ -144,11 +144,12 @@ Route::get('eliminar_material_leccion/{id}','LeccionController@destroymaterial')
 
 
 //quiz
+/*
 Route::get('nuevoquiz','QuizController@create');
-Route::get('quiz','QuizController@index');
+Route::get('quiz','QuizController@indexQuizLeccion');
 Route::get('quizEdit/{id}','QuizController@edit');
 Route::post('crearQuiz','QuizController@store');
-
+*/
 
 /*
  * Quiz leccion
@@ -187,3 +188,6 @@ Route::post('addcarrito','CarritoController@store');
 Route::get('carrito','CarritoController@index');
 Route::resource('cart','CarritoController');
 //Route::get('payment/status','CarritoController@compras');
+
+//Foros
+Route::get('foros','ForoController@index');
