@@ -16,24 +16,30 @@
         @endif
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="card">
+            <div class="col-md-12" style="padding-bottom: 2rem;">
+                <div class="card" align="center">
                     <div class="card-block">
-                        <h3>Bienvenido, {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
-                        <span style="text-transform: uppercase;">{{Auth::user()->rol}}</span>
+                        <h3>BIENVENIDO, <br> {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
+                        <span style="text-transform: uppercase;">ROL:  <b>{{Auth::user()->rol}}</b></span>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-12">
+            <br>
+
+            <div class="col-md-12" style="padding-bottom: 2rem; ">
+            <div class="row">
+
+                <br>
+
 
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #2196F3 !important; border-radius: 15px !important;" >
                         <div class="card-block">
-                          <center>
+                            <center>
 
-                    <h3>CURSOS</h3><h4>{{$contadorCurso}}</h4>
-                          </center>
+                                <h3>Total Cursos Creados</h3><h5><b>{{$contadorCurso}}</b></h5>
+                            </center>
 
                         </div>
 
@@ -41,24 +47,24 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #F43F3A !important; border-radius: 15px !important;">
                         <div class="card-block">
                             <center>
-                                <h3>INSCRITOS</h3>
-                                <h4>{{$contadorIns}}</h4>
+                                <h3>Total de Inscritos</h3>
+                                <h5><b>{{$contadorIns}}</b></h5>
                             </center>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #BCC02D !important; border-radius: 15px !important;">
                         <div class="card-block">
                             <center>
-                                <h3>DINERO</h3>
+                                <h3>Dinero Recaudado</h3>
                                 @foreach($recibido as $reci)
-                                <h4>$ {{number_format($reci->dinero, 0, ',', '.')}}</h4>
-                                    @endforeach
+                                    <h5><b>$ {{number_format($reci->dinero, 0, ',', '.')}}</b></h5>
+                                @endforeach
                             </center>
                         </div>
                     </div>
@@ -67,6 +73,8 @@
 
 
 
+
+            </div>
             </div>
 
             <div class="col-md-12">
@@ -79,7 +87,7 @@
                         <div>
 
                             <br>
-                            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="dataTable2" class="table table-striped table-lightfont" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>Nombre Curso</th>
@@ -99,7 +107,7 @@
                                 <tbody>
                                 @foreach($cursos as $curso)
                                     <tr>
-                                        <td><a>{{$curso->nombre}}</a></td>
+                                        <td><a>{{$curso->name}}</a></td>
                                         <td>$ {{number_format($curso->precio, 0, ',', '.')}}</td>
                                         <td>{{$curso->contador}}</td>
                                         <td>
