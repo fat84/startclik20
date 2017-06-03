@@ -19,7 +19,7 @@
             <div class="col-md-12" style="padding-bottom: 2rem;">
                 <div class="card" align="center">
                     <div class="card-block">
-                        <h3>BIENVENIDO, <br> {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
+                        <h3>BIENVENIDO, {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
                         <span style="text-transform: uppercase;">ROL:  <b>{{Auth::user()->rol}}</b></span>
                     </div>
                 </div>
