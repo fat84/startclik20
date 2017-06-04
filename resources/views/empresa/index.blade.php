@@ -19,7 +19,7 @@
             <div class="col-md-12" style="padding-bottom: 2rem;">
                 <div class="card" align="center">
                     <div class="card-block">
-                        <h3>BIENVENIDO, {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
+                        <h3>BIENVENIDO, {{Auth::user()->razon_social}}</h3>
                         <span style="text-transform: uppercase;">ROL:  <b>{{Auth::user()->rol}}</b></span>
                     </div>
                 </div>
@@ -53,6 +53,9 @@
                                 <h3>Total de Inscritos</h3>
                                 <h5><b>{{$contadorIns}}</b></h5>
                             </center>
+                            <script>
+                                console.log({{$cursos}})
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -107,15 +110,15 @@
                                 <tbody>
                                 @foreach($cursos as $curso)
                                     <tr>
-                                        <td><a>{{$curso->name}}</a></td>
+                                        <td><a>{{$curso->nombre}}</a></td>
                                         <td>$ {{number_format($curso->precio, 0, ',', '.')}}</td>
                                         <td>{{$curso->contador}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="material_curso/{{$curso->id}}/editar">Lista de Inscritos</a>
-                                                    <a class="dropdown-item" href="eliminar_material_curso/{{$curso->id}}">Informe de Suscripciones</a>
+                                                    <a class="dropdown-item" href="inscritos/{{$curso->id}}">Lista de Inscritos</a>
+                                                <!--<a class="dropdown-item" href="eliminar_material_curso/{{$curso->id}}">Informe de Suscripciones</a> -->
                                                 </div>
                                             </div>
                                         </td>

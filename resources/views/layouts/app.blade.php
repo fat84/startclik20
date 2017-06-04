@@ -169,38 +169,73 @@
             <div class="logo-w"><a class="logo" href="{{url('/')}}"><img src="{{asset('img/logo-start.png')}}" style="width: 200px"><span></span></a>
             </div>
             <div class="menu-and-user">
-                <div class="logged-user-w">
-                    <div class="avatar-w"><img alt="" src="{{asset('img/usuario/'.Auth::user()->avatar)}}"></div>
-                    <div class="logged-user-info-w">
-                        <div class="logged-user-name">{{Auth::user()->name}} {{Auth::user()->apellidos}}</div>
-                        <div class="logged-user-role">{{Auth::user()->rol}}</div>
+                @if(Auth::user()->rol == 'empresa')
+                    <div class="logged-user-w">
+                        <div class="avatar-w"><img alt="" src="{{asset('img/usuario/'.Auth::user()->avatar)}}"></div>
+                        <div class="logged-user-info-w">
+                            <div class="logged-user-name">{{Auth::user()->razon_social}}</div>
+                            <div class="logged-user-role">{{Auth::user()->rol}}</div>
+                        </div>
+                        <div class="logged-user-menu">
+                            <div class="avatar-w"><img alt="" src="{{asset('img/usuario/'.Auth::user()->avatar)}}"></div>
+                            <div class="logged-user-info-w">
+                                <div class="logged-user-name">{{Auth::user()->razon_social}}</div>
+                                <div class="logged-user-role">{{Auth::user()->rol}}</div>
+                            </div>
+                            <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
+                            <ul>
+                                <li><a href="#"><i class="os-icon os-icon-mail-01"></i><span>Mail</span></a></li>
+                                <li><a href="{{url('miperfil')}}"><i class="os-icon os-icon-user-male-circle2"></i><span>Perfil</span></a>
+                                </li>
+                                <li><a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Compras</span></a>
+                                </li>
+                                <li><a href="#"><i class="os-icon os-icon-others-43"></i><span>Notificaciones</span></a></li>
+                                <li>
+                                    <a  href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="os-icon os-icon-signs-11"></i>
+                                        <span>Cerrar sesión</span></a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="logged-user-menu">
+                    @else
+                    <div class="logged-user-w">
                         <div class="avatar-w"><img alt="" src="{{asset('img/usuario/'.Auth::user()->avatar)}}"></div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">{{Auth::user()->name}} {{Auth::user()->apellidos}}</div>
                             <div class="logged-user-role">{{Auth::user()->rol}}</div>
                         </div>
-                        <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
-                        <ul>
-                            <li><a href="#"><i class="os-icon os-icon-mail-01"></i><span>Mail</span></a></li>
-                            <li><a href="{{url('miperfil')}}"><i class="os-icon os-icon-user-male-circle2"></i><span>Perfil</span></a>
-                            </li>
-                            <li><a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Compras</span></a>
-                            </li>
-                            <li><a href="#"><i class="os-icon os-icon-others-43"></i><span>Notificaciones</span></a></li>
-                            <li>
-                                <a  href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                        <div class="logged-user-menu">
+                            <div class="avatar-w"><img alt="" src="{{asset('img/usuario/'.Auth::user()->avatar)}}"></div>
+                            <div class="logged-user-info-w">
+                                <div class="logged-user-name">{{Auth::user()->name}} {{Auth::user()->apellidos}}</div>
+                                <div class="logged-user-role">{{Auth::user()->rol}}</div>
+                            </div>
+                            <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
+                            <ul>
+                                <li><a href="#"><i class="os-icon os-icon-mail-01"></i><span>Mail</span></a></li>
+                                <li><a href="{{url('miperfil')}}"><i class="os-icon os-icon-user-male-circle2"></i><span>Perfil</span></a>
+                                </li>
+                                <li><a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Compras</span></a>
+                                </li>
+                                <li><a href="#"><i class="os-icon os-icon-others-43"></i><span>Notificaciones</span></a></li>
+                                <li>
+                                    <a  href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="os-icon os-icon-signs-11"></i>
-                                    <span>Cerrar sesión</span></a>
-                            </li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </ul>
+                                        <span>Cerrar sesión</span></a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 <ul class="main-menu">
                     <li><a href="{{url('dashboard')}}">

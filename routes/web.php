@@ -35,8 +35,8 @@ Auth::routes();
 
 
 
-
 //vista de Cursos empresa
+Route::get('inscritos/{id}/','EmpresaController@inscritos_curso');
 
 
 

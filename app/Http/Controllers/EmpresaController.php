@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ciudad;
+use App\Curso;
 use App\Departamento;
 use App\Http\Requests\AdministradorRequest;
 use App\User;
@@ -157,9 +158,39 @@ class EmpresaController extends Controller
     {
         $cursos = DB::table('cursos')->where('empresa_id', '=', Auth::user()->id)->get();
 
-        $contadorCurso = DB::table('cursos')->where('empresa_id', '=', Auth::user()->id)->count();
+        $contadorCurso = DB::table('cursos')->where('empresa_id', '=', 2)->count();
 
 
         return view('empresa.index',compact('contadorCurso','cursos'));
+    }
+
+    public function inscritos_curso($id)
+    {
+        $users = DB::table('suscripcion')
+            ->select('users.name', 'users.apellidos', 'users.tipo_documento', 'users.documento', 'suscripcion.created_at as creacion')
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            //->where('users.rol','=', 'usuario')
+            ->where('cursos.id', '=', $id)->get();
+
+        $contauser = DB::table('suscripcion')
+            ->select(DB::raw('users.name', 'users.apellidos', 'users.tipo_documento', 'users.documento'))
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->where('users.rol','=', 'usuario')
+            ->count();
+
+
+        $curso2 = DB::table('suscripcion')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->selectRaw('sum(suscripcion.pago) as dinero')
+            ->where('cursos.id', '=', $id)
+            ->get();
+
+        $cursos = DB::table('cursos')->where('id', '=', $id)->get();
+
+
+        return view('empresa.inscritos_curso',compact('contauser','cursos', 'users', 'curso2'));
     }
 }

@@ -135,7 +135,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p><span class="badge">FREE</span> This is best place to offer something more to customer & increase the conversion rate. <a href="#" class="learn-more">Learn More</a></p>
+                <p> <!--<span class="badge">FREE</span> -->Este es el mejor lugar para mejor tus habilidades y adquirir nuevos conocimientos de una forma practica y rapida.Este es el mejor lugar para mejor tus habilidades y adquirir nuevos conocimientos de una forma práctica y rápida.<a href="#" class="learn-more">Leer Más</a></p>
             </div>
         </div> <!-- end row -->
     </div> <!-- end container -->
@@ -148,20 +148,20 @@
 
             <div class="col-md-3 col-sm-6 se-feature">
                 <i class="icon ion-ios-analytics-outline"></i>
-                <h5>Fully Responsive</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                <h5>A tu ritmo</h5>
+                <p>Capacítate con contenido de calidad al ritmo que más se adecue a tu horario, tú eliges cuando y donde.</p>
             </div> <!-- end se-feature -->
 
             <div class="col-md-3 col-sm-6 se-feature">
                 <i class="icon ion-ios-paper-outline"></i>
-                <h5>Well Documented</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                <h5>Contenido Actualizado</h5>
+                <p>Encuentre en cada uno de nuestros cursos la información reciente referente a los temas tratados dentro de ellos.</p>
             </div> <!-- end se-feature -->
 
             <div class="col-md-3 col-sm-6 se-feature">
                 <i class="icon ion-ios-lightbulb-outline"></i>
-                <h5>Easy To Use</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                <h5>Fácil de Usar</h5>
+                <p>Nuestra interfaz centrada al usuario le permite navegar a través de los cursos y menús de una forma rápida y fácil.</p>
             </div> <!-- end se-feature -->
 
             <div class="col-md-3 col-sm-6 se-feature">
@@ -215,32 +215,32 @@
 </section>
 
 <!-- ========== STEPS ========== -->
-<section class="se-section se-steps">
+<section class="se-section se-steps" style="background-color: #666">
     <div class="container">
         <div class="row text-center">
-            <h3 class="underline mtn">It's as ease as 1 - 2 - 3!</h3>
+            <h3 class="underline mtn">Comienza con 3 sencillos pasos!</h3>
         </div> <!-- end row -->
 
         <div class="row">
             <div class="col-md-4 col-sm-4 one-step">
-                <h4>Sign Up</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h4>Regístrate</h4>
+                <p>Llena el formulario de registro para acceder a nuestra plataforma y todos sus cursos</p>
             </div>
 
             <div class="col-md-4 col-sm-4 one-step">
-                <h4>Add Users</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h4>Selecciona un Curso</h4>
+                <p>Busca entre la variedad de cursos que tenemos y selecciona el más se adapte a tus necesidades.</p>
             </div>
 
             <div class="col-md-4 col-sm-4 one-step">
-                <h4>Assign Tasks</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h4>Aprende Online</h4>
+                <p>Accede a tu curso seleccionado y aborda cada uno de los temas y conceptos de una forma práctica y fácil.</p>
             </div>
         </div> <!-- end row -->
     </div> <!-- end container -->
 </section>
 
-<!-- ========== FEATURES ========== -->
+<!--
 <section class="se-section features-section parallax-bg" data-parallax="scroll" data-image-src="images/bg-img-3.jpg" data-speed="0.4">
     <div class="black-gradient">
         <div class="container">
@@ -253,7 +253,7 @@
                         <h5>Fully Responsive</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                     </div>
-                </div> <!-- end se-feature -->
+                </div>
 
                 <div class="col-md-6 col-sm-6 se-feature-style-2 mb60">
                     <div class="left">
@@ -263,7 +263,7 @@
                         <h5>Retina Ready</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                     </div>
-                </div> <!-- end se-feature -->
+                </div>
 
                 <div class="col-md-6 col-sm-6 se-feature-style-2 mb60">
                     <div class="left">
@@ -273,7 +273,7 @@
                         <h5>Lightning Fast</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                     </div>
-                </div> <!-- end se-feature -->
+                </div>
 
                 <div class="col-md-6 col-sm-6 se-feature-style-2 mb60">
                     <div class="left">
@@ -283,7 +283,7 @@
                         <h5>Google Fonts</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                     </div>
-                </div> <!-- end se-feature -->
+                </div>
 
                 <div class="col-md-6 col-sm-6 se-feature-style-2">
                     <div class="left">
@@ -293,7 +293,7 @@
                         <h5>Light Weight</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                     </div>
-                </div> <!-- end se-feature -->
+                </div>
 
                 <div class="col-md-6 col-sm-6 se-feature-style-2">
                     <div class="left">
@@ -303,20 +303,20 @@
                         <h5>Easy To Edit</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
                     </div>
-                </div> <!-- end se-feature -->
+                </div>
 
-            </div> <!-- end row -->
-        </div> <!-- end container -->
-    </div> <!-- end black-gradient -->
-</section> <!-- end features-section -->
+            </div>
+        </div>
+    </div>
+</section> -->
 
 <!-- ========== CTA SECTION ========== -->
 <section class="se-section primary-bg">
     <div class="container">
         <div class="row text-center">
-            <h3>Create Your Account Now!</h3>
-            <p>Get 30 days trial. No credit card required.</p>
-            <a href="#" class="btn se-btn-black btn-rounded">SIGN UP</a>
+            <h3>Registrate Ahora!</h3>
+            <p>Registrate para poder acceder a los cursos que tenemos para ti.</p>
+            <a href="#" class="btn se-btn-black btn-rounded">Registrarse</a>
         </div> <!-- end row -->
     </div> <!-- end container -->
 </section>
@@ -324,6 +324,7 @@
 <!-- ========== FOOTER ========== -->
 <footer class="light-footer">
     <div class="container">
+        <!--
         <div class="row">
             <div class="col-md-2 col-sm-3 col-xs-6">
                 <img src="images/dark-logo.svg" alt="" class="footer-logo">
@@ -365,11 +366,11 @@
                     <input type="email" class="form-control inp-rounded" placeholder="Enter your email id">
                     <span class="input-group-btn">
                                 <button class="btn se-btn btn-rounded" type="button">Subscribe!</button>
-                            </span> <!-- end input-group-btn -->
-                </div><!-- end input-group -->
+                            </span>
+                </div>
                 <p class="text-center text-muted">We don't spam!</p>
             </div>
-        </div> <!-- end row -->
+        </div>-->
 
         <div class="row footer-bottom">
             <div class="col-md-6">
