@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     if(Auth::check() && Auth::user()->rol == 'usuario'){
-        return view('usuario.index');
+        return redirect()->action('EstudianteController@index');
     }elseif (Auth::check() && Auth::user()->rol == 'instructor'){
         return view('instructor.index');
     }elseif (Auth::check() && Auth::user()->rol == 'administrador'){

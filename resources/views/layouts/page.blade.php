@@ -100,7 +100,7 @@
                         </li>
                     @else
                     <li class="nav-btn-wrap">
-                        <span class="nav-btn"><a href="/login" class="btn se-btn-black btn-rounded">Acceder</a></span>
+                        <span class="nav-btn"><a href="{{url('/login')}}" class="btn se-btn-black btn-rounded">Acceder</a></span>
                     </li>
                     <li class="nav-btn-wrap">
                         <span class="nav-btn"><a href="{{url('/register')}}" class="btn se-btn-black btn-rounded">Registrarse</a></span>
@@ -184,7 +184,7 @@
     <div class="container feature-desc">
         <div class="row">
             <div class="col-md-5 feature-info">
-                <h2>Educación de calidad y alcance</h2>
+                <h2>Educación de calidad y al alcance</h2>
                 <p>Por medio de nuestra plataforma podrás encontrar variedad de cursos para mejorar tus habilidades laborales y personales, con contenidos de tendencia y actualizados.</p>
                 <p>Gracias a su metodología puedes elegir el momento y lugar en el cual tú quieras mejorar y adquirir nuevos conocimientos, de una forma rápida, sencilla y eficaz</p>
                 <a href="https://www.facebook.com/STARTCLIK/" target="_blank" class="btn se-btn btn-rounded">Visitános</a>
