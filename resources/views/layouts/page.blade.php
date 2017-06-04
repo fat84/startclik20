@@ -123,7 +123,7 @@
                 <div class="inner text-center">
                     <h1 class="white-color">Aprende con los mejores profesionales.</h1>
                     <h5 class="">Educación virtual avanzada.</h5>
-                    <a href="#" class="btn se-btn-white btn-rounded">Registrarme</a>
+                    <a href="{{url('/register')}}" class="btn se-btn-white btn-rounded">Registrarme</a>
                 </div> <!-- end inner -->
             </div> <!-- end outer -->
         </div> <!-- end container -->
@@ -135,7 +135,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <p> <!--<span class="badge">FREE</span> -->Este es el mejor lugar para mejor tus habilidades y adquirir nuevos conocimientos de una forma practica y rapida.Este es el mejor lugar para mejor tus habilidades y adquirir nuevos conocimientos de una forma práctica y rápida.<a href="#" class="learn-more">Leer Más</a></p>
+                <p> <!--<span class="badge">FREE</span> -->Este es el mejor lugar para mejor tus habilidades y adquirir nuevos conocimientos de una forma practica y rapida.Este es el mejor lugar para mejor tus habilidades y adquirir nuevos conocimientos de una forma práctica y rápida.<!--<a href="#" class="learn-more">Leer Más</a></p>-->
             </div>
         </div> <!-- end row -->
     </div> <!-- end container -->
@@ -166,8 +166,8 @@
 
             <div class="col-md-3 col-sm-6 se-feature">
                 <i class="icon ion-ios-speedometer-outline"></i>
-                <h5>Lightning Fast</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                <h5>Capacítate Rápidamente</h5>
+                <p>Gracias a nuestras metodologías y practicidad, puedes aprender de una forma rápida y segura.</p>
             </div> <!-- end se-feature -->
 
         </div> <!-- end row -->
@@ -178,16 +178,16 @@
 <section class="se-section single-feature">
 
     <div class="col-md-6 zero-padding col-md-push-6 side-img">
-        <img src="http://placehold.it/1600x1000?text=SoftEase" alt="" class="img-responsive">
+        <img src="https://scontent-mia1-2.xx.fbcdn.net/v/t1.0-9/18033000_184416232077981_636685566532903009_n.png?oh=f5f9ae13a636ded58017445f235b356b&oe=59E1BA6D" alt="" class="img-responsive">
     </div> <!-- end side-img -->
 
     <div class="container feature-desc">
         <div class="row">
             <div class="col-md-5 feature-info">
-                <h2>This is amazing dashboard</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud officia deserunt mollit exercitation.</p>
-                <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui anim id est laborum.</p>
-                <a href="#" class="btn se-btn btn-rounded">Learn More</a>
+                <h2>Educación de calidad y alcance</h2>
+                <p>Por medio de nuestra plataforma podrás encontrar variedad de cursos para mejorar tus habilidades laborales y personales, con contenidos de tendencia y actualizados.</p>
+                <p>Gracias a su metodología puedes elegir el momento y lugar en el cual tú quieras mejorar y adquirir nuevos conocimientos, de una forma rápida, sencilla y eficaz</p>
+                <a href="https://www.facebook.com/STARTCLIK/" target="_blank" class="btn se-btn btn-rounded">Visitános</a>
             </div>
 
         </div> <!-- end row -->
@@ -199,16 +199,16 @@
 <section class="se-section single-feature">
 
     <div class="col-md-6 zero-padding side-img">
-        <img src="http://placehold.it/1600x1000?text=SoftEase" alt="" class="img-responsive">
+        <img src="https://scontent-mia1-2.xx.fbcdn.net/v/t1.0-9/983992_173319696520968_111344089795323219_n.jpg?oh=55df2a00be173c2065bcd350de64d5ea&oe=59E5A785" alt="" class="img-responsive">
     </div> <!-- end side-img -->
 
     <div class="container feature-desc">
         <div class="row">
             <div class="col-md-5 col-md-push-7 feature-info">
-                <h2>This is amazing dashboard</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud officia deserunt mollit exercitation.</p>
-                <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui anim id est laborum.</p>
-                <a href="#" class="btn se-btn btn-rounded">Learn More</a>
+                <h2>Con Paso a la U</h2>
+                <p>Junto a <b>Paso a la U</b> ofrecemos a toda la comunidad, conocimientos de gran calidad que generan y fortalecen, habilidades y destrezas identificadas como requisito en el proceso de estudio y de pruebas de admisión.</p>
+                <p style="font-style: italic">"<b>PASO A LA U</b>, es una institución que prepara y brinda todos los servicios necesarios al estudiante para el buen desarrollo de ingreso a la educación formal superior; dándoles las herramientas suficientes y necesarias que crean en el estudiante la autonomía de conseguir el éxito en este ámbito competitivo."</p>
+                <a href="http://pasoalau.org/" target="_blank" class="btn se-btn btn-rounded">Leer Más</a>
             </div>
         </div> <!-- end row -->
     </div> <!-- end container -->
@@ -218,7 +218,7 @@
 <section class="se-section se-steps" style="background-color: #666">
     <div class="container">
         <div class="row text-center">
-            <h3 class="underline mtn">Comienza con 3 sencillos pasos!</h3>
+            <h2 class="underline mtn" style="color: white !important;">Comienza con 3 sencillos pasos!</h2>
         </div> <!-- end row -->
 
         <div class="row">
@@ -316,7 +316,7 @@
         <div class="row text-center">
             <h3>Registrate Ahora!</h3>
             <p>Registrate para poder acceder a los cursos que tenemos para ti.</p>
-            <a href="#" class="btn se-btn-black btn-rounded">Registrarse</a>
+            <a href="{{url('/register')}}" class="btn se-btn-black btn-rounded">Registrarse</a>
         </div> <!-- end row -->
     </div> <!-- end container -->
 </section>
@@ -374,14 +374,14 @@
 
         <div class="row footer-bottom">
             <div class="col-md-6">
-                <p>Copyright &copy; SoftEase Technologies. 2016. All Rights Reserved.</p>
+                <p>Copyright &copy; StartClik. 2017. Todos los Derechos Reservados.</p>
             </div>
 
             <div class="col-md-6 text-right">
-                <h6><a href="#">FACEBOOK</a></h6>
-                <h6><a href="#">TWITTER</a></h6>
+                <h6><a href="https://www.facebook.com/STARTCLIK/" target="_blank">FACEBOOK</a></h6>
+               <!-- <h6><a href="#">TWITTER</a></h6>
                 <h6><a href="#">LINKEDIN</a></h6>
-                <h6><a href="#">GOOGLE PLUS</a></h6>
+                <h6><a href="#">GOOGLE PLUS</a></h6> -->
             </div>
         </div> <!-- end footer-bottom -->
     </div> <!-- end container -->

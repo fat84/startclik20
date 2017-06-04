@@ -177,7 +177,7 @@ class EmpresaController extends Controller
             ->select(DB::raw('users.name', 'users.apellidos', 'users.tipo_documento', 'users.documento'))
             ->join('users', 'suscripcion.user_id', 'users.id')
             ->join('cursos', 'suscripcion.curso', 'cursos.id')
-            ->where('users.rol','=', 'usuario')
+            ->where('cursos.id', '=', $id)
             ->count();
 
 
