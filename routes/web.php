@@ -30,6 +30,7 @@ Route::get('/dashboard', function () {
     }
 });
 
+
 Auth::routes();
 
 
