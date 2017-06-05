@@ -191,3 +191,9 @@ Route::resource('cart','CarritoController');
 
 //Foros
 Route::get('foros','ForoController@index');
+Route::get('foro/{slug}','ForoController@foroIndividual');
+Route::post('guardarComentariForo','ForoController@guardarComentariForo');
+Route::post('actualizarComentariForo','ForoController@actualizarComentariForo');
+Route::post('editarPost','ForoController@editarPost');
+Route::post('eliminarPostForo','ForoController@eliminarPostForo');
+//Route::resource('foritos','ForoController');

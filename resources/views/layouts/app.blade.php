@@ -290,7 +290,7 @@
                             <span>Mis cursos</span></a>
                     </li>
 
-                    <li><a href="#">
+                    <li><a href="{{url('foros')}}">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-text-input"></div>
                             </div>
