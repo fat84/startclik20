@@ -31,17 +31,34 @@ class EstudianteController extends Controller
             ->groupBy('cursos.id')
             ->where('suscripcion.user_id', '=', Auth::user()->id)
             ->get();
-
-        foreach ($mis_cursos as $curso)
+        $conta = DB::table('suscripcion')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->join('categoria', 'cursos.categoria_id', 'categoria.id')
+            ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, cursos.video_promo as video_promo, categoria.nombre as categoria')
+            ->groupBy('cursos.id')
+            ->where('suscripcion.user_id', '=', Auth::user()->id)
+            ->count();
+        if ($conta > 0) {
+            foreach ($mis_cursos as $curso) {
+                $cursos_diferentes = DB::table('suscripcion')
+                    ->join('cursos', 'suscripcion.curso', 'cursos.id')
+                    ->join('categoria', 'cursos.categoria_id', 'categoria.id')
+                    ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
+                    ->groupBy('cursos.id')
+                    ->whereNotIn('suscripcion.curso', [$curso->id])
+                    ->get();
+            }
+        }
+        else
         {
             $cursos_diferentes = DB::table('suscripcion')
                 ->join('cursos', 'suscripcion.curso', 'cursos.id')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
                 ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
                 ->groupBy('cursos.id')
-                ->whereNotIn('suscripcion.curso', [$curso->id])
                 ->get();
         }
+
 
 
         return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
