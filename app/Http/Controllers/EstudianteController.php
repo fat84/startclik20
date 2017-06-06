@@ -31,14 +31,14 @@ class EstudianteController extends Controller
             ->groupBy('cursos.id')
             ->where('suscripcion.user_id', '=', Auth::user()->id)
             ->get();
-        $conta = DB::table('suscripcion')
+        $conta1 = DB::table('suscripcion')
             ->join('cursos', 'suscripcion.curso', 'cursos.id')
             ->join('categoria', 'cursos.categoria_id', 'categoria.id')
             ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, cursos.video_promo as video_promo, categoria.nombre as categoria')
             ->groupBy('cursos.id')
             ->where('suscripcion.user_id', '=', Auth::user()->id)
             ->count();
-        if ($conta > 0) {
+        if ($conta1 > 0) {
             foreach ($mis_cursos as $curso) {
                 $cursos_diferentes = DB::table('suscripcion')
                     ->join('cursos', 'suscripcion.curso', 'cursos.id')

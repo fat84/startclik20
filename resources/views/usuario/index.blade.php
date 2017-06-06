@@ -17,7 +17,7 @@
                 <div class="card" align="center" style="background-color: #223883 !important; color: white">
                     <div class="card-block">
                         <h3>BIENVENIDO, {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
-                        <span style="text-transform: uppercase;">ROL:  <b>{{Auth::user()->rol}}</b></span>
+                        <span style="text-transform: uppercase;">Rol:  <b>{{Auth::user()->rol}}</b></span>
                     </div>
                 </div>
             </div>
