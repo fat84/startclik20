@@ -61,6 +61,9 @@ class EstudianteController extends Controller
 
 
 
+
+
+
         return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
     }
 
