@@ -113,50 +113,58 @@
                     </form>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Modulos</h4>
-                    </div>
-                    <div class="card-block">
-                        <br>
-                        <p><a href="{{url('new_modulo')}}" class="btn btn-primary">Agregar Modulo <i
-                                        class="material-icons">add</i></a></p>
-                        <br>
-                        <div class="">
-                            <ul style="list-style-type: none;">
-                                @foreach($modulos as $modulo)
-                                    <li class="">
-
-                                        <div class="">
-                                            <div class="media-left media-middle">
-                                                <img align="center" src="{{asset('img/modulo/'.$modulo->imagen)}}"
-                                                     width="100" class="rounded">
-                                            </div>
-                                            <div class="media-body media-middle">
-                                                <h5 class="card-title h6 mb-0">
-                                                    <a href="{{url('modulo/'.$modulo->id.'/editar')}}">{{$modulo->nombre}}</a>
-                                                </h5>
-                                                <small class="text-muted">{{$modulo->descripcion}}</small>
-                                                <br>
-
-                                                <small class="text-muted">Fecha de
-                                                    Creación: <?php $date = $curso->created_at;
-                                                    echo $date->format('d/m/Y');?></small>
-                                            </div>
-                                        </div>
-
-                                    </li>
-                                    <br>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
 
     </div>
+
+    </div>
+
+
+    <div class="element-wrapper"><h6 class="element-header">Modulos</h6>
+        <div class="element-box">
+
+            <div class="row">
+
+                @foreach($modulos as $modulo)
+
+
+
+                    <div class="card col-md-6" style="border-radius: 15px !important;">
+                        <div class="card-header bg-white text-xs-center">
+                            <h4 class="card-title"><a
+                                        href="{{url('perfil_modulo/'.$modulo->id)}}">{{$modulo->nombre}}</a>
+                            </h4>
+                        </div>
+                        <br>
+                        <a align="center" href="{{url('perfil_modulo/'.$modulo->id)}}">
+                            <img src="{{asset('img/modulo/'.$modulo->imagen)}}" alt="Card image cap"
+                                 style="width:50%;">
+                        </a>
+                        <div class="card-block">
+                            <small class="text-muted">{{$curso->nombre}}</small>
+                            <br>
+                            @if(strlen($modulo->descripcion) > 50)
+                                <?=substr($modulo->descripcion, 0, 1000) . "..."?>
+                                @else
+                                {{$modulo->descripcion}}
+                            @endif
+                            <span class="tag tag-primary"></span>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                @endforeach
+
+
+            </div>
+
+        </div>
 
     </div>
 @stop

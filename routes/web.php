@@ -101,6 +101,7 @@ Route::get('eliminar_material_curso/{id}','CursoController@destroymaterial');
 //Modulo
 Route::get('modulo','ModuloController@index');
 Route::get('new_modulo','ModuloController@newmodulo');
+Route::get('perfil_modulo/{id}','ModuloController@perfil');
 Route::post('guardar_modulo','ModuloController@store');
 Route::get('modulo/{id}/editar','ModuloController@edit');
 Route::post('editando_modulo/{id}','ModuloController@update');

@@ -52,6 +52,19 @@ class ModuloController extends Controller
         //
     }
 
+    public function perfil($id)
+    {
+        //
+
+        $modulo= Modulo::find($id);
+        $materias = DB::table('materia')
+            ->where('modulo_id', $id)
+            ->get();
+        return view('modulo.perfil')
+            ->with('modulo', $modulo)
+            ->with('materias', $materias);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
