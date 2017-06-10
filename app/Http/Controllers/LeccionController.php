@@ -181,4 +181,14 @@ class LeccionController extends Controller
         $material->delete();
         return redirect('subirmaterialdeapoyo_leccion')->with('message','Material eliminado');
     }
+
+    public function perfil($id)
+    {
+        //
+
+        $leccion= Leccion::find($id);
+
+        return view('lecciones.perfil')
+            ->with('leccion', $leccion);
+    }
 }

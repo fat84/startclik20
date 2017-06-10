@@ -136,6 +136,7 @@ Route::post('guardar_leccion','LeccionController@store');
 Route::get('leccion/{id}/editar','LeccionController@edit');
 Route::post('editando_leccion/{id}','LeccionController@update');
 Route::get('eliminar_leccion/{id}','LeccionController@destroy');
+Route::get('perfil_leccion/{id}','LeccionController@perfil');
 
 //Material de apoyo, se asocia con la leccion
 Route::get('subirmaterialdeapoyo_leccion','LeccionController@materialApoyoCrear');

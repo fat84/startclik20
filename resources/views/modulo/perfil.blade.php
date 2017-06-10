@@ -58,22 +58,43 @@
 
 
                     <div class="card col-md-6" style="border-radius: 15px !important;">
-                        <div class="card-header bg-white text-xs-center">
-                            <h4 class="card-title"><a
-                                        href="{{url('cursos/'.str_replace(' ', '',$materia->nombre).'/'.$materia->id)}}">{{$materia->nombre}}</a>
+                        <div class="card-header bg-white text-xs-center" align="center">
+                            <h4 class="card-title" style="margin-bottom: 0rem !important;">{{$materia->nombre}}
                             </h4>
+                            <small class="text-muted">{{$modulo->nombre}}</small>
                         </div>
                         <br>
 
-                        <div class="card-block">
-                            <small class="text-muted">{{$modulo->nombre}}</small>
+                        <div align="center" class="card-block" style="padding: 0rem !important;">
+                            <small class="text-muted">Descripción:</small>
                             <br>
                             @if(strlen($materia->descripcion) > 50)
                                 <?=substr($materia->descripcion, 0, 1000) . "..."?>
-                                @else
+                            @else
                                 {{$materia->descripcion}}
                             @endif
                             <span class="tag tag-primary"></span>
+                        </div>
+                        <br>
+                        <div class="card-block" style="padding: 0rem !important; padding-bottom: 1rem !important;">
+
+                            <h3 style="color: #0275d8">Lecciones</h3>
+
+                            <ul>
+                                <?php
+                                $lecciones = DB::table('lecciones')->select(DB::raw('lecciones.titulo as nombre, lecciones.descripcion as descripcion, lecciones.id as id'))
+                                    ->join('materia','lecciones.materia_id', '=', 'materia.id')
+                                    ->where('lecciones.materia_id', '=', $materia->id)
+                                    ->get();
+                                ?>
+                                @foreach($lecciones as $leccion)
+                                <li>
+                                    <a style="text-decoration:none; color: #1a50b7 !important;"
+                                            href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}}</b></a>
+                                </li>
+                                @endforeach
+                            </ul>
+
                         </div>
 
                     </div>
