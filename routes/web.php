@@ -33,9 +33,6 @@ Route::get('/dashboard', function () {
 
 Auth::routes();
 
-
-
-
 //vista de Cursos empresa
 Route::get('inscritos/{id}/','EmpresaController@inscritos_curso');
 
@@ -169,11 +166,6 @@ Route::post('quiz_preguta_crear/{id}','QuizController@guardarPregunta');
 Route::post('quiz_preguta_actualizar_leccion/{id}','QuizController@quizpreguntaleccionactualzar');
 //Route::post('quiz_preguta_informaion','QuizController@quiz_preguta_informaion');
 Route::get('eliminarPreguntaLeccion/{id}','QuizController@eliminarPreguntaLeccion');
-
-
-
-
-
 
 //compra paypal
 Route::get('payment', array(
