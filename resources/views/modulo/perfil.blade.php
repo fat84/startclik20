@@ -111,4 +111,8 @@
         </div>
 
     </div>
+
+    <a href="{{url('perfil_curso/'.$modulo->curso_id)}}"><button type="button" class="floated-chat-btn2" style="margin-right: 130px!important;" data-toggle="modal" data-target="#exampleModalLong">
+            Volver
+        </button></a>
 @stop

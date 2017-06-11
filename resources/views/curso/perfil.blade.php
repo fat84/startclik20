@@ -167,4 +167,8 @@
         </div>
 
     </div>
+
+    <a href="{{url('/dashboard')}}"><button type="button" class="floated-chat-btn2" style="margin-right: 130px!important;" data-toggle="modal" data-target="#exampleModalLong">
+        Volver
+    </button></a>
 @stop
