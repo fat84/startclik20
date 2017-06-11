@@ -24,40 +24,26 @@ class EstudianteController extends Controller
 
         //$cursos = Curso::All();
 
-           $mis_cursos = DB::table('suscripcion')
+        $mis_cursos = DB::table('suscripcion')
             ->join('cursos', 'suscripcion.curso', 'cursos.id')
             ->join('categoria', 'cursos.categoria_id', 'categoria.id')
             ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, cursos.video_promo as video_promo, categoria.nombre as categoria')
             ->groupBy('cursos.id')
             ->where('suscripcion.user_id', '=', Auth::user()->id)
             ->get();
-         //  return $mis_cursos;
-     /*   $conta1 = DB::table('suscripcion')
-            ->join('cursos', 'suscripcion.curso', 'cursos.id')
-            ->join('categoria', 'cursos.categoria_id', 'categoria.id')
-            ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, cursos.video_promo as video_promo, categoria.nombre as categoria')
-            ->groupBy('cursos.id')
-            ->where('suscripcion.user_id', '=', Auth::user()->id)
-            ->count();*/
-        $cursos_diferentes = '';
-        if (count($mis_cursos) > 0) {
-            foreach ($mis_cursos as $cursos) {
+        //Pluck me permite convertir en lista cierto campo
+        $ids = $mis_cursos->pluck('id');
 
-                dd( $cursos->id);
-               /* $cursos_diferentes = DB::table('suscripcion')
+        if (count($mis_cursos) > 0) {
+
+                $cursos_diferentes = DB::table('suscripcion')
                     ->join('cursos', 'suscripcion.curso', 'cursos.id')
                     ->join('categoria', 'cursos.categoria_id', 'categoria.id')
                     ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
                     ->groupBy('cursos.id')
-                    // ->whereNotIn('suscripcion.curso', [$curso->id])
-                    ->where('suscripcion.curso', '!=', [$curso->id])
-                    ->where('suscripcion.user_id', '=', [Auth::user()->id])
-                    ->get();*/
+                    ->whereNotIn('suscripcion.curso', $ids)
+                    ->get();
 
-            }
-        //   return $cursos_diferentes;
-           // return 'pailas';
-            return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
         }
         else
         {
@@ -67,13 +53,16 @@ class EstudianteController extends Controller
                 ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
                 ->groupBy('cursos.id')
                 ->get();
-
-            return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
-
         }
 
-        //return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
+
+
+
+
+
+        return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
     }
+
 
     /**
      * Show the form for creating a new resource.

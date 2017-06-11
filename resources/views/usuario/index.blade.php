@@ -27,6 +27,7 @@
         </div>
 
             <div class="col-md-12" style="padding-bottom: 2rem; ">
+                @if(count($cursos_diferentes) > 0)
                 <h2>Cursos Disponibles</h2>
                 <br>
                 <div class="row">
@@ -75,6 +76,10 @@
 
 
                 </div>
+
+                    @else
+                    <h2 align="center">Ya estas inscrito en todos los cursos <br> o no hay nuevos cursos disponibles</h2>
+                    @endif
             </div>
 
             <div class="col-md-12">

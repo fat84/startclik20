@@ -1,16 +1,7 @@
 @extends('layouts.app')
 @section('title','miperfil')
 @section('content')
-    @if($message=Session::has('message'))
-        <script>
-            $( document ).ready(function() {
-            swal(
-                'En hora buena!',
-                '{{Session::get('message')}}',
-                'success'
-            )});
-        </script>
-    @endif
+
 
 
         <div class="row">
