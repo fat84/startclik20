@@ -36,19 +36,17 @@ class EstudianteController extends Controller
 
         if (count($mis_cursos) > 0) {
 
-                $cursos_diferentes = DB::table('suscripcion')
-                    ->join('cursos', 'suscripcion.curso', 'cursos.id')
+                $cursos_diferentes = DB::table('cursos')
                     ->join('categoria', 'cursos.categoria_id', 'categoria.id')
                     ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
                     ->groupBy('cursos.id')
-                    ->whereNotIn('suscripcion.curso', $ids)
+                    ->whereNotIn('cursos.id', $ids)
                     ->get();
 
         }
         else
         {
-            $cursos_diferentes = DB::table('suscripcion')
-                ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            $cursos_diferentes = DB::table('cursos')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
                 ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
                 ->groupBy('cursos.id')
