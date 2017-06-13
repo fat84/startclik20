@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Suscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;
@@ -198,6 +199,14 @@ class PaypalController extends BaseController
         $order_item->quantity = 1;
         $order_item->curso_id = $producto->id;
         $order_item->save();
+
+        $suscription = new Suscripcion;
+        $suscription->user_id = \Auth::user()->id;
+        $suscription->curso = $producto->id;
+        $suscription->pago = $producto->price;
+        $suscription->save();
+
+
         /*OrderItem::create([
             'order_id' => $order_id,
             'price' => $producto->price,
