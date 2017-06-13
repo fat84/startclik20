@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Ciudad;
 use App\Curso;
 use App\Departamento;
@@ -11,7 +9,6 @@ use Illuminate\Http\Request;
 use Redirect;
 use Auth;
 use Illuminate\Support\Facades\DB;
-
 class EstudianteController extends Controller
 {
     /**
@@ -21,9 +18,7 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-
         //$cursos = Curso::All();
-
         $mis_cursos = DB::table('suscripcion')
             ->join('cursos', 'suscripcion.curso', 'cursos.id')
             ->join('categoria', 'cursos.categoria_id', 'categoria.id')
@@ -33,17 +28,14 @@ class EstudianteController extends Controller
             ->get();
         //Pluck me permite convertir en lista cierto campo
         $ids = $mis_cursos->pluck('id');
-
         if (count($mis_cursos) > 0) {
-
-                $cursos_diferentes = DB::table('suscripcion')
-                    ->join('cursos', 'suscripcion.curso', 'cursos.id')
-                    ->join('categoria', 'cursos.categoria_id', 'categoria.id')
-                    ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
-                    ->groupBy('cursos.id')
-                    ->whereNotIn('suscripcion.curso', $ids)
-                    ->get();
-
+            $cursos_diferentes = DB::table('suscripcion')
+                ->join('cursos', 'suscripcion.curso', 'cursos.id')
+                ->join('categoria', 'cursos.categoria_id', 'categoria.id')
+                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
+                ->groupBy('cursos.id')
+                ->whereNotIn('suscripcion.curso', $ids)
+                ->get();
         }
         else
         {
@@ -54,16 +46,8 @@ class EstudianteController extends Controller
                 ->groupBy('cursos.id')
                 ->get();
         }
-
-
-
-
-
-
         return view('usuario.index', compact('mis_cursos', 'cursos_diferentes'));
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -73,7 +57,6 @@ class EstudianteController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -95,9 +78,7 @@ class EstudianteController extends Controller
         $usuario->ciudad_id = $request->ciudad;
         $usuario->save();
         return redirect('usuarios')->with('message','Usuario Creado correctamnete');
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -108,7 +89,6 @@ class EstudianteController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -122,7 +102,6 @@ class EstudianteController extends Controller
         $usuario = User::find($id);
         return view('administrador.usuarioEdit',compact('usuario','departamento','ciudad'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -147,10 +126,8 @@ class EstudianteController extends Controller
             $usuario->password = bcrypt($request->password);
         }
         $usuario->save();
-
         return redirect('usuario/'.$id.'/edit')->with('message','Usuario Actualizado correctamente');
     }
-
     /**
      * Remove the specified resource from storage.
      *
