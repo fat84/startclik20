@@ -34,6 +34,7 @@ class EstudianteController extends Controller
         //Pluck me permite convertir en lista cierto campo
         $ids = $mis_cursos->pluck('id');
 
+
         if (count($mis_cursos) > 0) {
 
                 $cursos_diferentes = DB::table('cursos')
