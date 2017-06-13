@@ -6,6 +6,7 @@ use App\Categoria;
 use App\Curso;
 use App\Foro;
 use App\Http\Requests\CursoRequest;
+use App\Instructor_curso;
 use App\MaterialCurso;
 use App\Modulo;
 use App\Order;
@@ -311,6 +312,60 @@ class CursoController extends Controller
         $material = MaterialCurso::find($id);
         $material->delete();
         return redirect('subirmaterialdeapoyo_curso')->with('message','Material eliminado');
+    }
+
+    public function asignar($id)
+    {
+        $curso= Curso::find($id);
+
+        $instructores = DB::table('instructor_curso')
+            ->join('users', 'instructor_curso.instructor_id', 'users.id')
+            ->join('cursos', 'instructor_curso.curso_id', 'cursos.id')
+            ->selectRaw('users.name as name, users.id as id')
+            ->where('instructor_curso.curso_id', '=', $id)
+            ->get();
+        //Pluck me permite convertir en lista cierto campo
+        $ids = $instructores->pluck('id');
+
+
+        if (count($instructores) > 0) {
+
+            $disponibles = DB::table('users')
+                ->selectRaw('users.name as name, users.id as id, users.documento as documento')
+                ->whereNotIn('users.id', $ids)
+                ->where('users.rol', '=', 'instructor')
+                ->get();
+
+        }
+        else
+        {
+            $disponibles = DB::table('users')
+                ->selectRaw('users.name as name, users.id as id, users.documento as documento')
+                ->where('users.rol', '=', 'instructor')
+                ->get();
+        }
+
+
+        return view('curso.instructor_curso', compact('curso', 'instructores', 'disponibles'));
+    }
+
+    public function guardado() //este es para guardar
+    {
+
+
+        $dataValue = Input::get('emple');
+        if (count($dataValue) > 0) {
+
+            foreach ($dataValue as $valor) {
+                $instructor= new Instructor_curso();
+                $instructor->instructor_id = $valor;
+                $instructor->curso_id = Input::get('curso_id');
+                $instructor->save();
+            }
+        }
+
+
+        return back()->with('message','Instructor asignado correctamente');
     }
 
 }

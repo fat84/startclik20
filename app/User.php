@@ -36,4 +36,13 @@ class User extends Authenticatable
     public function order(){
         return $this->hasMany('App\Order','user_id','id');
     }
+
+    public function cursos()
+    {
+        return $this->belongsToMany('App\Curso');
+    }
+
+    public function instructor_curso(){
+        return $this->belongsToMany('App\Instructor_cuso');
+    }
 }

@@ -32,4 +32,13 @@ class Curso extends Model
         return $this->hasMany('App\Modulo','curso_id','id');
     }
 
+    public function instructores()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
+    public function instructor_curso(){
+        return $this->belongsToMany('App\Instructor_cuso');
+    }
+
 }

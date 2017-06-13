@@ -88,6 +88,9 @@ Route::get('curso/{id}/editar','CursoController@edit');
 Route::post('editando_curso/{id}','CursoController@update');
 Route::get('eliminar_curso/{id}','CursoController@destroy');
 
+Route::get('instructor_curso/{id}','CursoController@asignar');
+Route::post('instructor/guardado', ['uses' => 'CursoController@guardado', 'as' => 'instructor.guardado']);
+
 //Material de apoyo, se asocia con el curso
 Route::get('subirmaterialdeapoyo_curso','CursoController@materialApoyoCrear');
 Route::post('guardar_materialApoyo_curso','CursoController@guardarmaterial');
