@@ -145,7 +145,7 @@ class PaypalController extends BaseController
         $token = Input::get('token');
 
         if (empty($payerId) || empty($token)) {
-            return redirect('carritos')
+            return redirect('carrito')
                 ->with('message', 'Hubo un problema al intentar pagar con Paypal');
         }
 

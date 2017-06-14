@@ -28,6 +28,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php $total = 0;?>
                     @foreach(Cart::content() as $carrito)
                         <tr>
                             <td>
@@ -53,6 +54,9 @@
                                 </form>
                             </td>
                         </tr>
+                        <?php
+                        $total +=$carrito->price;
+                        ?>
                     @endforeach
                     </tbody>
                 </table>
@@ -62,7 +66,7 @@
                             <div class="row">
                                 <div class="col-xs-6"><strong>Subtotal</strong></div>
                                 <div class="col-xs-6 text-xs-right">
-                                    ${{Cart::subtotal()}}
+                                    $ {{number_format($total,2)}}
                                 </div>
                             </div>
                            <!-- <div class="row">
@@ -74,7 +78,7 @@
                             <div class="row">
                                 <div class="col-xs-6"><strong>Total</strong></div>
                                 <div class="col-xs-6 text-xs-right">
-                                    ${{Cart::total()}}
+                                    $ {{number_format($total,2)}}
                                 </div>
                             </div>
                         </div>

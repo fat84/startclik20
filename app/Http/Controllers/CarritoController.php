@@ -46,6 +46,10 @@ class CarritoController extends Controller
         });*/
         $curso = Curso::find($request->curso_id);
         $categoria = Categoria::find($curso->categoria_id);
+        $cart = Cart::content();
+        foreach ($cart as $car){
+          echo  $car->id;
+        }
         $cart = Cart::add(['id' => $curso->id, 'name' => $curso->nombre, 'qty' => 1, 'price' => $curso->precio,
             'options' => ['categoria_id'=>$categoria->id,'categoria_nombre'=>$categoria->nombre,'img'=>$curso->imagen]]);
         Cart::associate($cart->rowId, \App\Curso::class);
