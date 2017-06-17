@@ -21,7 +21,7 @@
 
                         <div class="card">
                             <div class="card-block">
-                                <h3>Bienvenido, {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
+                                <h3>Bienvenidos, {{Auth::user()->name}} {{Auth::user()->apellidos}}</h3>
                                 <span style="text-transform: uppercase;">{{Auth::user()->rol}}</span>
                             </div>
                         </div>
