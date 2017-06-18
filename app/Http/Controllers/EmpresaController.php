@@ -51,9 +51,65 @@ class EmpresaController extends Controller
             ->where('cursos.empresa_id', '=', Auth::user()->id)
             ->get();
 
+        $carbon = new \Carbon\Carbon();
+        $date = $carbon->now();
+        $date = $date->format('Y-m-d');
+
+        $cursosxmes = DB::table('cursos')
+            ->select(DB::raw('MONTH(cursos.created_at) as mes, COUNT(cursos.id) as cuantos, EXTRACT(YEAR FROM cursos.created_at) as año'))
+            ->where('cursos.empresa_id','=', Auth::user()->id)
+            ->whereRaw('EXTRACT(YEAR FROM cursos.created_at) = YEAR(NOW())')
+            ->groupBy('mes')
+            ->get();
+
+        $cursosxaño = DB::table('cursos')
+            ->select(DB::raw('EXTRACT(YEAR FROM cursos.created_at) as año, COUNT(cursos.id) as cuantos'))
+            ->where('cursos.empresa_id','=', Auth::user()->id)
+            ->groupBy('año')
+            ->get();
+
+        $inscritosxmes = DB::table('suscripcion')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->select(DB::raw('EXTRACT(YEAR FROM suscripcion.created_at) as año, COUNT(suscripcion.id) as cuantos, MONTH(suscripcion.created_at) as mes'))
+            ->selectRaw('EXTRACT(YEAR FROM suscripcion.created_at) as año, COUNT(suscripcion.id) as cuantos')
+            ->where('cursos.empresa_id', '=', Auth::user()->id)
+            ->whereRaw('EXTRACT(YEAR FROM cursos.created_at) = YEAR(NOW())')
+            ->groupBy('mes')
+            ->get();
+
+        $inscritosxaño = DB::table('suscripcion')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->select(DB::raw('EXTRACT(YEAR FROM suscripcion.created_at) as año, COUNT(suscripcion.id) as cuantos'))
+            ->selectRaw('users.name as nombre, users.apellidos as apellidos, users.documento as documento, users.tipo_documento as tipo_documento')
+            ->where('cursos.empresa_id', '=', Auth::user()->id)
+            ->groupBy('año')
+            ->get();
+
+        $pagoxmes = DB::table('suscripcion')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->select(DB::raw('EXTRACT(YEAR FROM suscripcion.created_at) as año, SUM(suscripcion.pago) as dinero, MONTH(suscripcion.created_at) as mes'))
+            ->where('cursos.empresa_id', '=', Auth::user()->id)
+            ->whereRaw('EXTRACT(YEAR FROM suscripcion.created_at) = YEAR(NOW())')
+            ->groupBy('mes')
+            ->get();
+
+        $pagoxaño = DB::table('suscripcion')
+            ->join('cursos', 'suscripcion.curso', 'cursos.id')
+            ->join('users', 'suscripcion.user_id', 'users.id')
+            ->select(DB::raw('EXTRACT(YEAR FROM suscripcion.created_at) as año, SUM(suscripcion.pago) as dinero'))
+            ->selectRaw('users.name as nombre, users.apellidos as apellidos, users.documento as documento, users.tipo_documento as tipo_documento')
+            ->where('cursos.empresa_id', '=', Auth::user()->id)
+            ->groupBy('año')
+            ->get();
 
 
-        return view('empresa.index',compact('contadorCurso','cursos', 'inscritos', 'contadorIns', 'recibido'));
+
+
+
+        return view('empresa.index',compact('contadorCurso','cursos', 'inscritos', 'contadorIns', 'recibido', 'cursosxmes', 'cursosxaño', 'inscritosxmes', 'inscritosxaño', 'pagoxmes', 'pagoxaño'));
     }
 
     /**

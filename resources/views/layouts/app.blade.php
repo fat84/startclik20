@@ -25,10 +25,21 @@
     <link href="{{asset('css/mainbfdf.css?version=2.3')}}" rel="stylesheet">
     <link href="{{asset('js/sweetalert.css')}}" rel="stylesheet">
     <link href="{{asset('summernote/summernote.css')}}" rel="stylesheet">
+
+
     <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- Material Design Icons  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Aqui son para las graficas -->
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <!-- Aqui son para las graficas -->
+
 </head>
 <body>
 <div class="all-wrapper menu-side with-side-panel">
