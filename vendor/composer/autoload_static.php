@@ -80,6 +80,10 @@ class ComposerStaticInitbdf594e6fd92193d94e4b8f11f74dcd9
         array (
             'Illuminate\\' => 11,
         ),
+        'H' => 
+        array (
+            'HighIdeas\\UsersOnline\\' => 22,
+        ),
         'G' => 
         array (
             'Gloudemans\\Shoppingcart\\' => 24,
@@ -238,6 +242,10 @@ class ComposerStaticInitbdf594e6fd92193d94e4b8f11f74dcd9
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'HighIdeas\\UsersOnline\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/highideas/laravel-users-online/src',
         ),
         'Gloudemans\\Shoppingcart\\' => 
         array (
@@ -1464,6 +1472,11 @@ class ComposerStaticInitbdf594e6fd92193d94e4b8f11f74dcd9
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'HighIdeas\\UsersOnline\\Listeners\\LogoutListener' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Listeners/LogoutListener.php',
+        'HighIdeas\\UsersOnline\\Middleware\\UsersOnline' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Middleware/UsersOnline.php',
+        'HighIdeas\\UsersOnline\\Providers\\UsersOnlineEventServiceProvider' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Providers/UsersOnlineEventServiceProvider.php',
+        'HighIdeas\\UsersOnline\\Traits\\UsersOnlineTrait' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/Traits/UsersOnlineTrait.php',
+        'HighIdeas\\UsersOnline\\UsersOnlineServiceProvider' => __DIR__ . '/..' . '/highideas/laravel-users-online/src/UsersOnlineServiceProvider.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',

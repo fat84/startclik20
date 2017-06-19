@@ -195,3 +195,6 @@ Route::post('actualizarComentariForo','ForoController@actualizarComentariForo');
 Route::post('editarPost','ForoController@editarPost');
 Route::post('eliminarPostForo','ForoController@eliminarPostForo');
 //Route::resource('foritos','ForoController');
+
+//obsequi de curso
+Route::post('obsequiarCursoUsuario','EstudianteController@obsequioCurso');

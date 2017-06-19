@@ -95,9 +95,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        <button class="btn pull-right" data-toggle="modal" data-target="#myModal">Añadir cursos</button>
                         <div class="card-block">
                             <div>
-
                                 <br>
                                 <div class="table-responsive">
                                     <table id="dataTable2" class="table table-striped table-lightfont" cellspacing="0" width="100%">
@@ -106,7 +106,6 @@
                                             <th>Fecha</th>
                                             <th>Curso</th>
                                             <th>Tipo</th>
-                                            <th>Acción</th>
                                         </tr>
                                         </thead>
                                         <tfoot>
@@ -114,22 +113,20 @@
                                             <th>Fecha</th>
                                             <th>Curso</th>
                                             <th>Tipo</th>
-                                            <th>Acción</th>
                                         </tr>
                                         </tfoot>
                                         <tbody>
+                                        @foreach($cursosUsuario as $cursoUsuario)
                                         <tr>
-                                            <th>20/06/2017</th>
-                                            <th>Entrenamiento militar</th>
-                                            <th>Pago</th>
-                                            <th>Acción</th>
+                                            <th>{{$cursoUsuario->fechaSuscripcion}}</th>
+                                            <th style="text-transform: uppercase">{{$cursoUsuario->nombreCursos}}</th>
+                                            @if($cursoUsuario->pagoCurso > 0)
+                                            <th>PAGO</th>
+                                            @else
+                                                <th>GRATIS</th>
+                                            @endif
                                         </tr>
-                                        <tr>
-                                            <th>20/06/2017</th>
-                                            <th>Entrenamiento militar</th>
-                                            <th>Gratis </th>
-                                            <th>Acción</th>
-                                        </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -142,6 +139,39 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir cursos a usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{url('obsequiarCursoUsuario')}}" method="post">
+                    {{ csrf_field() }}
+                <div class="modal-body">
+                        <select required class="form-control" name="cursoAregalar">
+                            @if(count($cursosNoUsuario) > 0)
 
+                                <option value="">Seleccione un curso</option>
+                                @foreach($cursosNoUsuario as $cursoNoUsuario)
+                                    <option value="{{$cursoNoUsuario->id}}">{{$cursoNoUsuario->nombre}}</option>
+                                @endforeach
+                               <input name="idUsuario" value="{{$usuario->id}}">
+                            @else
+                                <option value="">El usuario tiene todos los cursos</option>
+                            @endif
+                        </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @stop

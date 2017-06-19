@@ -6,6 +6,7 @@ use App\Ciudad;
 use App\Curso;
 use App\Departamento;
 use App\Http\Requests\AdministradorRequest;
+use App\Suscripcion;
 use App\User;
 use Illuminate\Http\Request;
 use Redirect;
@@ -119,7 +120,31 @@ class EstudianteController extends Controller
         $departamento = Departamento::All();
         $ciudad = Ciudad::All();
         $usuario = User::find($id);
-        return view('administrador.usuarioEdit',compact('usuario','departamento','ciudad'));
+        $cursosUsuario = DB::table('suscripcion')
+            ->join('cursos','suscripcion.curso','=','cursos.id')
+            ->join('users','suscripcion.user_id','=','users.id')
+            ->select('suscripcion.created_at as fechaSuscripcion','cursos.nombre as nombreCursos','suscripcion.pago as pagoCurso','suscripcion.curso as idCursos')
+            ->where('user_id','=',$id)
+            ->get();
+        $ids = $cursosUsuario->pluck('idCursos');
+       $cursosNoUsuario = DB::table('cursos')
+                            ->select('cursos.*')
+                            ->whereNotIn('cursos.id', $ids)->get();
+
+        $user = new User;
+      echo  $user->allOnline();
+
+        return view('administrador.usuarioEdit',compact('usuario','departamento','ciudad','cursosUsuario','cursosNoUsuario'));
+    }
+
+    public function obsequioCurso(Request $request){
+            $suscripcion = new Suscripcion;
+            $suscripcion->pago = 0;
+            $suscripcion->user_id = $request->idUsuario;
+            $suscripcion->curso = $request->cursoAregalar;
+            $suscripcion->save();
+
+            return redirect('usuario/'.$request->idUsuario.'/edit')->with('message','Curso obsequiado correctamente');
     }
 
     /**
