@@ -15,61 +15,104 @@
     $administrador = \App\User::where('rol','=','administrador')->count();
     ?>
 
-    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-block">
-                        <center>
-                            <h4>Cursos</h4><h5><b>{{$cursos}}</b></h5>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-block">
-                        <center>
-                            <h4>Usuarios</h4><h5><b>{{$usuarios}}</b></h5>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-block">
-                        <center>
-                            <h4>Instructores</h4><h5><b>{{$instructores}}</b></h5>
-                        </center>
+            <div class="col-sm-12">
+                <div class="element-wrapper">
+                    <h6 class="element-header">Dashboard Administrador</h6>
+                    <div class="element-content">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="element-box el-tablo">
+                                    <div class="label">Cursos creados</div>
+                                    <div class="value">{{$cursos}}</div>
+                                    <!--<div class="trending trending-up"><span>12%</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="element-box el-tablo">
+                                    <div class="label">Usuarios</div>
+                                    <div class="value">{{$usuarios}}</div>
+                                    <!--<div class="trending trending-up"><span>12%</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="element-box el-tablo">
+                                    <div class="label">Instructores</div>
+                                    <div class="value">{{$instructores}}</div>
+                                    <!--<div class="trending trending-up"><span>12%</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="element-box el-tablo">
+                                    <div class="label">Empresas</div>
+                                    <div class="value">{{$empresas}}</div>
+                                    <!--<div class="trending trending-up"><span>12%</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="element-box el-tablo">
+                                    <div class="label">Administradores</div>
+                                    <div class="value">{{$administrador}}</div>
+                                    <!--<div class="trending trending-up"><span>12%</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-    <br>
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <center>
-                            <h4>Empresas</h4><h5><b>{{$empresas}}</b></h5>
-                        </center>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <center>
-                            <h4>Administradores</h4><h5><b>{{$administrador}}</b></h5>
-                        </center>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="element-wrapper"><h6 class="element-header">Compras de cursos</h6>
+                <div class="element-box">
+                    <div class="os-tabs-w">
+                        <div class="os-tabs-controls">
+                            <ul class="nav nav-tabs smaller">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                                        href="#tab_overview">Overview</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                                        href="#tab_sales">Sales</a></li>
+                            </ul>
+                            <ul class="nav nav-pills smaller hidden-sm-down">
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#">Today</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                                        href="#">7 Days</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#">14
+                                        Days</a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#">Last
+                                        Month</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_overview">
+                                <div class="el-tablo">
+                                    <div class="label">Compras realizadas</div>
+                                    <div class="value">12,537</div>
+                                </div>
+                                <div class="el-chart-w">
+                                    <canvas height="150px" id="lineChart" width="600px"></canvas>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_sales"></div>
+                            <div class="tab-pane" id="tab_conversion"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
 
 
 @stop

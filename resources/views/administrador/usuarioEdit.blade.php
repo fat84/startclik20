@@ -22,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
 
                         <div class="card">
                             <div class="card-block">
@@ -37,7 +37,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
                                     <fieldset class="form-group">
                                         <label for="exampleInputEmail1">Nombres</label>
                                         {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombres']) !!}
@@ -64,7 +64,7 @@
                                     </fieldset>
 
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
 
                                     <fieldset class="form-group">
                                         <label for="exampleInputEmail1">Direccion</label>
@@ -87,5 +87,61 @@
                 </div>
         </div>
     </div>
+
+
+
+    <div class="element-wrapper"><h6 class="element-header">Cursos del usuario</h6>
+        <div class="element-box">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-block">
+                            <div>
+
+                                <br>
+                                <div class="table-responsive">
+                                    <table id="dataTable2" class="table table-striped table-lightfont" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Curso</th>
+                                            <th>Tipo</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Curso</th>
+                                            <th>Tipo</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        <tr>
+                                            <th>20/06/2017</th>
+                                            <th>Entrenamiento militar</th>
+                                            <th>Pago</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        <tr>
+                                            <th>20/06/2017</th>
+                                            <th>Entrenamiento militar</th>
+                                            <th>Gratis </th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 @stop
