@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Redirect;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class InstructorController extends Controller
 {
@@ -20,6 +21,15 @@ class InstructorController extends Controller
     public function index()
     {
 
+        $cursos = DB::table('instructor_curso')
+            ->join('cursos', 'instructor_curso.curso_id', 'cursos.id')
+            ->join('suscripcion', 'cursos.id', 'suscripcion.curso')
+            ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, COUNT(suscripcion.user_id) as contador')
+            ->groupBy('cursos.id')
+            ->where('instructor_curso.instructor_id', '=', Auth::user()->id)
+            ->get();
+
+        return view('instructor.index', compact('cursos'));
     }
 
     /**

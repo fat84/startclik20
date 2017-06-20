@@ -589,16 +589,6 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#home" role="tab">Messages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
-                    </li>
-
                 </ul>
 
                 <div class="tab-content">
@@ -748,89 +738,6 @@
 	height: 400px;
 	margin: 0 auto"></div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane" id="messages" role="tabpanel">
-                        <div class="element-box">
-                            <div class="os-tabs-w">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_overview">
-                                        <div class="el-tablo">
-                                            <div class="label">Unique Visitors</div>
-                                            <div class="value">12,537</div>
-                                        </div>
-                                        <div class="el-chart-w">
-                                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                            <canvas height="155" id="lineChart" width="622" style="display: block; width: 622px; height: 155px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab_sales">
-
-                                    </div>
-                                    <div class="tab-pane" id="tab_conversion">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="settings" role="tabpanel">
-                        <div class="element-box">
-                            <div class="os-tabs-w">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_overview">
-                                        <div class="el-tablo">
-                                            <div class="label">Unique Visitors</div>
-                                            <div class="value">12,537</div>
-                                        </div>
-                                        <div class="el-chart-w">
-                                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                            <canvas height="155" id="lineChart" width="622" style="display: block; width: 622px; height: 155px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab_sales">
-
-                                    </div>
-                                    <div class="tab-pane" id="tab_conversion">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade active" id="home" role="tabpanel">
-                        <div class="os-tabs-w">
-                            <div class="tab-content">
-
-                               <h2>goal</h2>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel">
-
-                        <div class="element-box">
-                            <div class="os-tabs-w">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="tab_overview">
-                                        <div class="el-tablo">
-                                            <div class="label">Unique Visitors</div>
-                                            <div class="value">12,537</div>
-                                        </div>
-                                        <div class="el-chart-w">
-                                            <iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                                            <canvas height="155" id="lineChart" width="622" style="display: block; width: 622px; height: 155px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab_sales">
-
-                                    </div>
-                                    <div class="tab-pane" id="tab_conversion">
-
-                                    </div>
                                 </div>
                             </div>
                         </div>

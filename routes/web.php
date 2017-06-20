@@ -19,7 +19,7 @@ Route::get('/dashboard', function () {
     if(Auth::check() && Auth::user()->rol == 'usuario'){
         return redirect()->action('EstudianteController@index');
     }elseif (Auth::check() && Auth::user()->rol == 'instructor'){
-        return view('instructor.index');
+        return redirect()->action('InstructorController@index');
     }elseif (Auth::check() && Auth::user()->rol == 'administrador'){
         return view('administrador.index');
     }elseif (Auth::check() && Auth::user()->rol == 'empresa'){
