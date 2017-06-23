@@ -88,9 +88,18 @@
                                     ->get();
                                 ?>
                                 @foreach($lecciones as $leccion)
+
+
                                 <li>
+                                    <dl>
+                                        <dt>
                                     <a style="text-decoration:none; color: #1a50b7 !important;"
                                             href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}}</b></a>
+                                        </dt>
+                                        <dd>
+                                            Hola gente
+                                        </dd>
+                                    </dl>
                                 </li>
                                 @endforeach
                             </ul>

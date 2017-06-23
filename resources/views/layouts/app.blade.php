@@ -287,6 +287,21 @@
                             <li><a href="{{url('categorias')}}">Crear categorias</a></li>
                         </ul>
                     </li>
+
+                        <li class="has-sub-menu"><a href="#">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon os-icon-tasks-checked"></div>
+                                </div>
+                                <span>Material de Apoyo</span></a>
+                            <ul class="sub-menu">
+
+                                <li><a href="{{url('subirmaterialdeapoyo_curso')}}">Material para cursos</a></li>
+                                <li><a href="{{url('subirmaterialdeapoyo_modulo')}}">Material para modulos</a></li>
+                                <li><a href="{{url('subirmaterialdeapoyo')}}">Material para materias</a></li>
+                                <li><a href="{{url('subirmaterialdeapoyo_leccion')}}">Material para lecciones</a></li>
+
+                            </ul>
+                        </li>
                     @endif
 
                     <li><a href="{{url('dashboard')}}">
