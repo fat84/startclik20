@@ -95,7 +95,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <button class="btn pull-right" data-toggle="modal" data-target="#myModal">Añadir cursos</button>
+                        <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Añadir cursos</button>
                         <div class="card-block">
                             <div>
                                 <br>
@@ -159,7 +159,7 @@
                                 @foreach($cursosNoUsuario as $cursoNoUsuario)
                                     <option value="{{$cursoNoUsuario->id}}">{{$cursoNoUsuario->nombre}}</option>
                                 @endforeach
-                               <input name="idUsuario" value="{{$usuario->id}}">
+                               <input hidden name="idUsuario" value="{{$usuario->id}}">
                             @else
                                 <option value="">El usuario tiene todos los cursos</option>
                             @endif

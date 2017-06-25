@@ -132,7 +132,7 @@ class EstudianteController extends Controller
                             ->whereNotIn('cursos.id', $ids)->get();
 
         $user = new User;
-      echo  $user->allOnline();
+        $user->allOnline();
 
         return view('administrador.usuarioEdit',compact('usuario','departamento','ciudad','cursosUsuario','cursosNoUsuario'));
     }

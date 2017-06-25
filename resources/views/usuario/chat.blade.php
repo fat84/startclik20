@@ -3,6 +3,10 @@
     <div class="floated-chat-i">
         <div class="chat-close"><i class="os-icon os-icon-close"></i></div>
         <div class="chat-head">
+            <div>
+                <p style="text-transform: uppercase">conectados</p>
+
+            </div>
             <div class="user-w with-status status-green">
                 <div class="user-avatar-w">
                     <div class="user-avatar"><img alt="" src="{{asset('img/avatar1.jpg')}}"></div>

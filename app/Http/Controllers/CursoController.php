@@ -23,6 +23,7 @@ use Hash;
 use Validator;
 use Cart;
 
+
 class CursoController extends Controller
 {
     /**
@@ -239,8 +240,9 @@ class CursoController extends Controller
     public function destroy($id)
     {
         //
-        $curso = Curso::find($id);
-        $curso->delete();
+       // $curso = Curso::find($id)->delete();
+        $curso = Curso::find($id)->delete();
+        //$curso->delete();
         return redirect('curso')->with('message','Curso Eliminado correctamente');
     }
 
