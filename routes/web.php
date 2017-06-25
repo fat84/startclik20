@@ -198,3 +198,4 @@ Route::post('eliminarPostForo','ForoController@eliminarPostForo');
 
 //obsequi de curso
 Route::post('obsequiarCursoUsuario','EstudianteController@obsequioCurso');
+Route::post('chatOnline','ChatController@index');

@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Carrito' => $baseDir . '/app/Carrito.php',
     'App\\Categoria' => $baseDir . '/app/Categoria.php',
+    'App\\Chat' => $baseDir . '/app/Chat.php',
     'App\\Ciudad' => $baseDir . '/app/Ciudad.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Curso' => $baseDir . '/app/Curso.php',
@@ -23,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\CarritoController' => $baseDir . '/app/Http/Controllers/CarritoController.php',
     'App\\Http\\Controllers\\CategoriaController' => $baseDir . '/app/Http/Controllers/CategoriaController.php',
+    'App\\Http\\Controllers\\ChatController' => $baseDir . '/app/Http/Controllers/ChatController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CursoController' => $baseDir . '/app/Http/Controllers/CursoController.php',
     'App\\Http\\Controllers\\EmpresaController' => $baseDir . '/app/Http/Controllers/EmpresaController.php',

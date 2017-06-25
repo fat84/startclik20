@@ -1,11 +1,33 @@
+<script>
+    $( document ).ready(function() {
+        var parametros = {
+        };
+
+        var ruta = '/chatOnline';
+        $.ajax({
+            url: ruta,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'POST',
+            dataType: 'json',
+            data: parametros,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
+
+
 <div class="floated-chat-btn"><i class="os-icon os-icon-mail-07"></i><span>Chat</span></div>
 <div class="floated-chat-w">
     <div class="floated-chat-i">
         <div class="chat-close"><i class="os-icon os-icon-close"></i></div>
         <div class="chat-head">
             <div>
-                <p style="text-transform: uppercase">conectados</p>
-
+                <p style="text-transform: uppercase;font-weight: bold">conectados</p>
+                <ul>
+                    <li></li>
+                </ul>
             </div>
             <div class="user-w with-status status-green">
                 <div class="user-avatar-w">
