@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use Illuminate\Http\Request;
 use App\User;
 class ChatController extends Controller
@@ -27,9 +28,15 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $usuario = User::find($request->idUsuario);
+
+       // $chat = Chat::where('');
+        return response()->json([
+            'usuario'=>$usuario,
+          //  'chat'=>$chat
+        ]);
     }
 
     /**
