@@ -246,6 +246,11 @@ class CursoController extends Controller
         return redirect('curso')->with('message','Curso Eliminado correctamente');
     }
 
+    public function habilitar($id){
+        $data = Curso::withTrashed()->where('id', '=', $id)->restore();
+        return redirect('curso')->with('message','Curso habilitado :)');
+    }
+
 
     public function perfilCursoUsuario(Request $request,$nombre,$id){
 

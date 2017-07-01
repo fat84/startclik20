@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!-- Mirrored from light.pinsupreme.com/auth_login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 May 2017 23:57:22 GMT -->
-<head><title>Admin Dashboard HTML Template</title>
+<head><title>Startclik - Plataforma educativa avanzada</title>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="template language" name="keywords">

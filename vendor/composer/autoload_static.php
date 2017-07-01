@@ -1713,6 +1713,7 @@ class ComposerStaticInitbdf594e6fd92193d94e4b8f11f74dcd9
         'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsTo.php',
         'Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/BelongsToMany.php',
         'Illuminate\\Database\\Eloquent\\Relations\\Concerns\\InteractsWithPivotTable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/Concerns/InteractsWithPivotTable.php',
+        'Illuminate\\Database\\Eloquent\\Relations\\Concerns\\SupportsDefaultModels' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/Concerns/SupportsDefaultModels.php',
         'Illuminate\\Database\\Eloquent\\Relations\\HasMany' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasMany.php',
         'Illuminate\\Database\\Eloquent\\Relations\\HasManyThrough' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasManyThrough.php',
         'Illuminate\\Database\\Eloquent\\Relations\\HasOne' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Database/Eloquent/Relations/HasOne.php',

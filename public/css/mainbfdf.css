@@ -6906,7 +6906,7 @@ body {
     overflow: hidden;
     display: inline-block; }
     .logged-user-w .avatar-w img {
-      width: 50px;
+      width: 90px;
       height: auto;
       border-radius: 50px; }
   .logged-user-w .logged-user-role {
