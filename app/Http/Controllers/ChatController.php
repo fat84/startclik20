@@ -15,7 +15,7 @@ class ChatController extends Controller
     public function index()
     {
         $user = new User;
-       $users = $user->allOnline();
+        $users = $user->allOnline();
 
 
         return response()->json([
