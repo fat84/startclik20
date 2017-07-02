@@ -61,7 +61,7 @@
                                 @endforeach
                         </div>
                             @endforeach
-                            <button type="submit" class="btn btn-block btn-success">Crear quiz</button>
+                            <button type="submit" class="btn btn-block btn-success">Guardar Respuestas</button>
                         </form>
 
                     </div>
