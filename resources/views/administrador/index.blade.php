@@ -13,6 +13,30 @@
     $instructores = \App\User::where('rol','=','instructor')->count();
     $empresas = \App\User::where('rol','=','empresa')->count();
     $administrador = \App\User::where('rol','=','administrador')->count();
+
+    $user = new \App\User;
+    $users = $user->allOnline();
+
+    $counterIn = 0;
+    $counterAd= 0;
+    $counterEm= 0;
+    $counterUs= 0;
+    foreach ($users as $users2){
+        if ($users2->rol == 'instructor'){
+            $counterIn = count($users2);
+        }
+        if ($users2->rol == 'administrador'){
+            $counterAd = count($users2);
+        }
+        if ($users2->rol == 'usuario'){
+            $counterUs = count($users2);
+        }
+        if ($users2->rol == 'empresa'){
+            $counterEm = count($users2);
+        }
+    }
+
+
     ?>
 
         <div class="row">
@@ -25,7 +49,7 @@
                                 <div class="element-box el-tablo">
                                     <div class="label">Cursos creados</div>
                                     <div class="value">{{$cursos}}</div>
-                                    <!--<div class="trending trending-up"><span>12%</span><i
+                                   <!-- <div class="trending trending-up"><span></span><i
                                                 class="os-icon os-icon-arrow-up2"></i></div>-->
                                 </div>
                             </div>
@@ -33,32 +57,32 @@
                                 <div class="element-box el-tablo">
                                     <div class="label">Usuarios</div>
                                     <div class="value">{{$usuarios}}</div>
-                                    <!--<div class="trending trending-up"><span>12%</span><i
-                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                    <div class="trending trending-up"><span>{{$counterUs}}</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="element-box el-tablo">
                                     <div class="label">Instructores</div>
                                     <div class="value">{{$instructores}}</div>
-                                    <!--<div class="trending trending-up"><span>12%</span><i
-                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                    <div class="trending trending-up"><span>{{$counterIn}}</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="element-box el-tablo">
                                     <div class="label">Empresas</div>
                                     <div class="value">{{$empresas}}</div>
-                                    <!--<div class="trending trending-up"><span>12%</span><i
-                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                    <div class="trending trending-up"><span>{{$counterEm}}</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="element-box el-tablo">
                                     <div class="label">Administradores</div>
                                     <div class="value">{{$administrador}}</div>
-                                    <!--<div class="trending trending-up"><span>12%</span><i
-                                                class="os-icon os-icon-arrow-up2"></i></div>-->
+                                    <div class="trending trending-up"><span>{{$counterAd}}</span><i
+                                                class="os-icon os-icon-arrow-up2"></i></div>
                                 </div>
                             </div>
                         </div>
