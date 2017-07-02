@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <!-- Mirrored from light.pinsupreme.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 May 2017 23:56:31 GMT -->
@@ -45,7 +44,7 @@
 <div class="all-wrapper menu-side with-side-panel">
     <div class="layout-w">
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
-            <div class="mm-logo-buttons-w"><a class="mm-logo" href="/home"><img src="{{asset('img/logo-start.png')}}" style="width: 200px"><span> </span></a>
+            <div class="mm-logo-buttons-w"><a class="mm-logo" href="/home"><img src="{{asset('img/logo-start.png')}}" style="width: 350px"><span> </span></a>
                 <div class="mm-buttons">
                    <!-- <div class="content-panel-open">
                         <div class="os-icon os-icon-grid-circles"></div>
@@ -383,10 +382,11 @@
             <div class="content-panel-toggler"><i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span></div>
             <div class="content-i">
                 <div class="content-box">
-                    @yield('content')
+                    <div class="container-fluid">
+                        @yield('content')
 
-                    @include('usuario.chat')
-
+                        @include('usuario.chat')
+                    </div>
                 </div>
             </div>
         </div>

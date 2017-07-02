@@ -11,7 +11,7 @@
                 )});
         </script>
     @endif
-    <div class="element-wrapper"><h6 class="element-header">Creación de Cursos</h6>
+    <div class="element-wrapper"><h6 class="element-header">Creación de Empresas</h6>
         <div class="element-box">
         <h1 class="page-heading h2">CURSOS</h1>
         <div class="row">
@@ -60,11 +60,7 @@
                         @foreach($cursos as $curso)
                             <tr>
                                 <td>{{$curso->nombre}}</td>
-                                @if(Auth::user()->rol == 'administrador')
-                                <td>{{$curso->categoria->nombre}}</td>
-                                @elseif(Auth::user()->rol == 'instructor' or Auth::user()->rol == 'empresa')
-                                    <td>{{$curso->categoria_nombre}}</td>
-                                @endif
+                                <td>{{$curso->nombre_cate}}</td>
                                 <td>{{$curso->precio}}</td>
                                 <td><img src="{{asset('img/usuario/'.$curso->imagen)}}" style="width: 60px"></td>
                                 <td>
@@ -79,9 +75,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="perfil_curso/{{$curso->id}}">Perfil</a>
-                                            @if(Auth::user()->rol == 'empresa' or Auth::user()->rol == 'administrador')
                                             <a class="dropdown-item" href="instructor_curso/{{$curso->id}}">Asignar instructor</a>
-                                            @endif
                                             <a class="dropdown-item" href="curso/{{$curso->id}}/editar">Editar</a>
                                             <a class="dropdown-item" href="eliminar_curso/{{$curso->id}}">Eliminar</a>
 

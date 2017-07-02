@@ -87,6 +87,7 @@ Route::post('guardar_curso','CursoController@store');
 Route::get('curso/{id}/editar','CursoController@edit');
 Route::post('editando_curso/{id}','CursoController@update');
 Route::get('eliminar_curso/{id}','CursoController@destroy');
+Route::get('habilitar_curso/{id}','CursoController@habilitar');
 
 Route::get('instructor_curso/{id}','CursoController@asignar');
 Route::post('instructor/guardado', ['uses' => 'CursoController@guardado', 'as' => 'instructor.guardado']);
