@@ -162,6 +162,7 @@ Route::get('quiz_leccion','QuizController@indexQuizLeccion');
 Route::get('quiz_leccion_crear','QuizController@createQuizLeccion');
 Route::post('quiz_leccion_guardar','QuizController@storeQuizLeccion');
 Route::get('quiz_leccion_editar/{id}','QuizController@editQuizLeccion');
+Route::get('perfil_quiz/{id}','QuizController@perfil');
 Route::post('quiz_leccion_actualizar/{id}','QuizController@updateQuizLeccion');
 
 //pregunta leccion

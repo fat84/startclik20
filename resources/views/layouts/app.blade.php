@@ -317,12 +317,7 @@
                         </li>
                     @endif
 
-                    <li><a href="{{url('dashboard')}}">
-                            <div class="icon-w">
-                                <div class="os-icon os-icon-crown"></div>
-                            </div>
-                            <span>Cursos</span></a>
-                    </li>
+
                    <!-- <li><a href="#">
                             <div class="icon-w">
                                 <div class="os-icon os-icon os-icon-tasks-checked"></div>

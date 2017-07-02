@@ -188,13 +188,14 @@
 </section>
 
 <!-- ========== SINGLE FEATURE SECTION ========== -->
+<!--
 <section class="se-section single-feature">
 
     <div class="col-md-6 zero-padding side-img">
         <img src="https://scontent-mia1-2.xx.fbcdn.net/v/t1.0-9/983992_173319696520968_111344089795323219_n.jpg?oh=55df2a00be173c2065bcd350de64d5ea&oe=59E5A785" alt="" class="img-responsive">
-    </div> <!-- end side-img -->
+    </div>
 
-  <!--  <div class="container feature-desc">
+   <div class="container feature-desc">
         <div class="row">
             <div class="col-md-5 col-md-push-7 feature-info">
                 <h2>Con Paso a la U</h2>
@@ -202,11 +203,10 @@
                 <p style="font-style: italic">"<b>PASO A LA U</b>, es una institución que prepara y brinda todos los servicios necesarios al estudiante para el buen desarrollo de ingreso a la educación formal superior; dándoles las herramientas suficientes y necesarias que crean en el estudiante la autonomía de conseguir el éxito en este ámbito competitivo."</p>
                 <a href="http://pasoalau.org/" target="_blank" class="btn se-btn btn-rounded">Leer Más</a>
             </div>
-        </div> <!-- end row ->
-    </div> <!-- end container -->
+        </div>
+    </div>
 </section>
-
-<!-- ========== STEPS ========== -->
+-->
 <section class="se-section se-steps" style="background-color: #666">
     <div class="container">
         <div class="row text-center">

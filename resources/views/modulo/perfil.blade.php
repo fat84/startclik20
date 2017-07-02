@@ -86,6 +86,8 @@
                                     ->join('materia','lecciones.materia_id', '=', 'materia.id')
                                     ->where('lecciones.materia_id', '=', $materia->id)
                                     ->get();
+
+                                $ids = $lecciones->pluck('id');
                                 ?>
                                 @foreach($lecciones as $leccion)
 
@@ -96,11 +98,33 @@
                                     <a style="text-decoration:none; color: #1a50b7 !important;"
                                             href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}}</b></a>
                                         </dt>
-                                        <dd>
-                                            Hola gente
-                                        </dd>
+
                                     </dl>
                                 </li>
+                                @endforeach
+                            </ul>
+
+                            <h3 style="color: #0275d8">Quices</h3>
+
+                            <ul>
+                                <?php
+                                $quices = DB::table('quiz_leccion')->select(DB::raw('quiz_leccion.titulo as titulo, quiz_leccion.id as id'))
+                                    ->join('lecciones','quiz_leccion.leccion_id', '=', 'lecciones.id')
+                                    ->whereIn('quiz_leccion.leccion_id', $ids)
+                                    ->get();
+                                ?>
+                                @foreach($quices as $quiz)
+
+
+                                    <li>
+                                        <dl>
+                                            <dt>
+                                                <a style="text-decoration:none; color: #1a50b7 !important;"
+                                                   href="{{url('perfil_quiz/'.$quiz->id)}}"><b>{{$quiz->titulo}}</b></a>
+                                            </dt>
+
+                                        </dl>
+                                    </li>
                                 @endforeach
                             </ul>
 

@@ -22,6 +22,16 @@ class QuizController extends Controller
         return view('quiz.quiz',compact('quiz'));
     }
 
+    public function perfil($id)
+    {
+        //
+
+        $quiz= Quiz_leccion::find($id);
+
+        return view('quiz.perfil')
+            ->with('quiz', $quiz);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

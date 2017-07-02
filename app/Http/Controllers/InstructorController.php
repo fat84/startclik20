@@ -23,10 +23,11 @@ class InstructorController extends Controller
 
         $cursos = DB::table('instructor_curso')
             ->join('cursos', 'instructor_curso.curso_id', 'cursos.id')
-            ->join('suscripcion', 'cursos.id', 'suscripcion.curso')
+            ->leftJoin('suscripcion', 'cursos.id', 'suscripcion.curso')
             ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, COUNT(suscripcion.user_id) as contador')
             ->groupBy('cursos.id')
             ->where('instructor_curso.instructor_id', '=', Auth::user()->id)
+            ->where('cursos.deleted_at', '=', null)
             ->get();
 
         return view('instructor.index', compact('cursos'));

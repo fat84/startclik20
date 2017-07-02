@@ -96,7 +96,7 @@
                                     @foreach($materiales_apoyo as $material_apoyo)
                                         <tr>
                                             <td><a href="{{url('archivos/materialapoyo/'.$material_apoyo->url)}}" download="">{{$material_apoyo->nombre}}</a></td>
-                                            <td>{{$material_apoyo->curso->nombre}}</td>
+                                            <td>{{$material_apoyo->curso_nombre}}</td>
                                              <td>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
