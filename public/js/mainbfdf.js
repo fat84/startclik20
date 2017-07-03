@@ -214,7 +214,7 @@ $(function () {
 
       // line chart data
       var lineData = {
-        labels: ["1", "5", "10", "15", "20", "25", "30", "35"],
+        labels: ["1", "5", "10", "15", "20", "25", "30", "90"],
         datasets: [{
           label: "Visitors Graph",
           fill: false,
