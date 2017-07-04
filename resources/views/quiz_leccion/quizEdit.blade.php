@@ -26,7 +26,7 @@
             <h4 class="card-title">Datos basicos</h4>
         </div>
         <div class="card-block">
-            <form action="{{url('quiz_leccion_actualizar/'.$quiz->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{url('quiz_leccion_actualizar/'.$quiz->id)}}" method="post" id="quiz" name="quiz" enctype="multipart/form-data">
                 {{ csrf_field() }}
               <div class="col-md-12">
                   <div class="form-group row">
@@ -67,7 +67,18 @@
                     <div class="form-group row">
                         <label for="course_title" class="col-sm-3 col-form-label"><b style="color:red;">* </b><b>Score</b>:</label>
                         <div class="col-sm-9 col-md-4">
-                            <input type="number" name="score" required class="form-control" value="{{$quiz->score}}">
+                            <input type="number" name="score" id="score" required class="form-control" value="{{$quiz->score}}">
+
+                            <?php
+
+                            $valor = DB::table('quiz_leccion_pregunta')
+                                ->where('quiz_leccion_id', '=', $quiz->id)
+                                ->sum('score');
+
+                            $minimo = $quiz->score - $valor;
+                            ?>
+
+                            <input hidden type="text" name="minimo" id="minimo" required class="form-control" value="{{$minimo}}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -134,7 +145,7 @@ $contador7 = 1;
                     <h5 class="modal-title">Editar Pregunta {{$pregunta->titulo}}</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('quiz_preguta_actualizar_leccion/'.$pregunta->id)}}" method="post">
+                    <form action="{{url('quiz_preguta_actualizar_leccion/'.$pregunta->id)}}" id="editar" name="editar" method="post">
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Titulo:</label>
@@ -190,12 +201,12 @@ $contador7 = 1;
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Pregunta Score:</label>
                             <div class="col-md-4">
-                                <input id="touch-spin-2" value="{{$pregunta->score}}" required data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" name="score" class="form-control"/>
+                                <input onblur="comprobarQuiz2()" id="score" value="{{$pregunta->score}}" required data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" name="score" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-3">
-                                <button type="submit" class="btn btn-success">Actalizar Pregunta</button>
+                                <button onclick="comprobarQuiz2()" type="submit" class="btn btn-success">Actalizar Pregunta</button>
                             </div>
                         </div>
                     </form>
@@ -203,7 +214,10 @@ $contador7 = 1;
             </div>
         </div>
     </div>
+
 @endforeach
+
+
 
 
 
@@ -218,7 +232,7 @@ $contador7 = 1;
                     <h5 class="modal-title">Agregar Pregunta</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('quiz_preguta_crear/'.$quiz->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{url('quiz_preguta_crear/'.$quiz->id)}}" method="post" id="pregunta" name="pregunta" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Titulo:</label>
@@ -231,7 +245,7 @@ $contador7 = 1;
                             <div class="col-md-4">
                                 <select class="custom-control custom-select form-control" id="tipo_respuesta" name="tipo_respuesta" onchange="tipo_respuestas()" required>
                                     <option value="">Seleccione un tipo</option>
-                                    <option value="1">Texto</option>
+                                    <!--<option value="1">Texto</option>-->
                                     <option value="2">Selección Multiple</option>
                                 </select>
                             </div>
@@ -245,12 +259,12 @@ $contador7 = 1;
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Pregunta Score:</label>
                             <div class="col-md-4">
-                                <input id="touch-spin-2" required data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" name="score" class="form-control"/>
+                                <input onblur="comprobarQuiz()" id="score" required data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" name="score" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-3">
-                                <button type="submit" class="btn btn-success">Guardar</button>
+                                <button onclick="comprobarQuiz()" type="submit" class="btn btn-success">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -259,6 +273,39 @@ $contador7 = 1;
         </div>
     </div>
 
+
+
+    <script>
+        function comprobarQuiz() {
+
+            var clave1 = document.quiz.minimo.value;
+            var clave2 = document.pregunta.score.value;
+
+            if (clave2 > clave1) {
+
+                swal("No se puede asignar este puntaje a la pregunta", "Valor maximo para la pregunta es: " + clave1, "warning")
+
+            }
+            else if (clave1 <= clave2){
+                //swal("Salida de efectivo realizada", "Valor: " + clave1);
+                swal({
+                    title: "Estas seguro?",
+                    text: "EL puntaje de la pregunta sera: " + clave2,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Si",
+                    cancelButtonText: "No",
+                    closeOnConfirm: false
+                }, function(isConfirm){
+                    if (isConfirm) pregunta.submit();
+                });
+
+
+
+            }
+        }
+    </script>
 
     <div class="modal fade" id="editQuiz2">
         <div class="modal-dialog">
@@ -270,7 +317,7 @@ $contador7 = 1;
                     <h5 class="modal-title">Editar Pregunta</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('quiz_preguta_crear/'.$quiz->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{url('quiz_preguta_crear/'.$quiz->id)}}" method="post"  enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Titulo:</label>
@@ -297,12 +344,12 @@ $contador7 = 1;
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Pregunta Score:</label>
                             <div class="col-md-4">
-                                <input id="touch-spin-2" required data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" name="score" class="form-control"/>
+                                <input id="score"  required data-toggle="touch-spin" data-min="0" data-max="100" data-step="5" type="text" name="score" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-3">
-                                <button type="submit" class="btn btn-success">Guardar</button>
+                                <button  type="submit" class="btn btn-success">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -312,8 +359,12 @@ $contador7 = 1;
     </div>
 
 
+
+
     <a href="{{url('quiz_leccion')}}"><button type="button" class="floated-chat-btn2" style="margin-right: 130px!important;" data-toggle="modal" data-target="#exampleModalLong">
             Volver
         </button></a>
+
+
 
 @stop

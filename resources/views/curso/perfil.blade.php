@@ -113,6 +113,35 @@
                     </form>
                 </div>
 
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Material de Apoyo</h4>
+                    </div>
+                    <form class="form-horizontal card-block">
+                        <div class="form-group row">
+                            <?php
+                            $material_curso = DB::table('material_apoyo_curso')
+                                ->select(DB::raw('material_apoyo_curso.nombre as nombre, material_apoyo_curso.url as url, material_apoyo_curso.curso_id as curso_id'))
+                                ->where('material_apoyo_curso.curso_id', '=', $curso->id)
+                                ->get();
+                            ?>
+                            <ul>
+                                @foreach($material_curso as $material_apoyo)
+                                    <li>
+                                        <dl>
+                                            <dt style="color: #1a50b7">
+                                                <a style="text-decoration:none; color: #1a50b7 !important;" href="{{url('archivos/materialapoyo/'.$material_apoyo->url)}}" download="">{{$material_apoyo->nombre}}</a>
+                                            </dt>
+                                        </dl>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </di>
+
+                    </form>
+                </div>
+
+
             </div>
         </div>
 

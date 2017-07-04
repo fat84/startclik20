@@ -41,7 +41,7 @@ class CursoController extends Controller
             $cursos = DB::table('instructor_curso')
                 ->join('cursos', 'instructor_curso.curso_id', 'cursos.id')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
-                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as categoria_nombre, cursos.imagen as imagen, cursos.video_promo as video_promo')
+                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as nombre_cate , cursos.imagen as imagen, cursos.video_promo as video_promo')
                 ->groupBy('cursos.id')
                 ->where('instructor_curso.instructor_id', '=', Auth::user()->id)
                 ->where('cursos.deleted_at', '=', null)
@@ -51,7 +51,7 @@ class CursoController extends Controller
         {
             $cursos = DB::table('cursos')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
-                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as categoria_nombre, cursos.imagen as imagen, cursos.video_promo as video_promo')
+                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as nombre_cate , cursos.imagen as imagen, cursos.video_promo as video_promo')
                 ->groupBy('cursos.id')
                 ->where('cursos.empresa_id', '=', Auth::user()->id)
                 ->where('cursos.deleted_at', '=', null)

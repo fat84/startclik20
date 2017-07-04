@@ -31,6 +31,27 @@
                             <div class="col-md-12" style="">
                                 <strong>Descripción:</strong> <span><?= $modulo->descripcion; ?></span>
                             </div>
+                            <br>
+                            <div class="col-md-12" style="">
+                                <strong>Material de Apoyo: <br>
+                                    <?php
+                                    $material_modulo = DB::table('material_apoyo_modulo')
+                                        ->select(DB::raw('material_apoyo_modulo.nombre as nombre, material_apoyo_modulo.url as url, material_apoyo_modulo.modulo_id as modulo_id'))
+                                        ->where('material_apoyo_modulo.modulo_id', '=', $modulo->id)
+                                        ->get();
+                                    ?>
+                                <ul>
+                                    @foreach($material_modulo as $material_apoyo)
+                                    <li>
+                                        <dl>
+                                            <dt style="color: #1a50b7">
+                                            <a href="{{url('archivos/materialapoyo/'.$material_apoyo->url)}}" download="">{{$material_apoyo->nombre}}</a>
+                                            </dt>
+                                        </dl>
+                                    </li>
+                                        @endforeach
+                                </ul></strong>
+                            </div>
 
 
                         </div>
@@ -126,6 +147,26 @@
                                         </dl>
                                     </li>
                                 @endforeach
+                            </ul>
+
+                            <h3 style="color: #0275d8">Material de Apoyo</h3>
+
+                            <?php
+                            $material_modulo2 = DB::table('material_apoyo_materia')
+                                ->select(DB::raw('material_apoyo_materia.nombre as nombre, material_apoyo_materia.url as url, material_apoyo_materia.materia_id as materia_id'))
+                                ->where('material_apoyo_materia.materia_id', '=', $materia->id)
+                                ->get();
+                            ?>
+                            <ul>
+                                @foreach($material_modulo2 as $material_apoyo2)
+                                    <li>
+                                        <dl>
+                                            <dt style="color: #1a50b7">
+                                                <a style="text-decoration:none; color: #1a50b7 !important;" href="{{url('archivos/materialapoyo/'.$material_apoyo2->url)}}" download="">{{$material_apoyo2->nombre}}</a>
+                                            </dt>
+                                        </dl>
+                                    </li>
+                            @endforeach
                             </ul>
 
                         </div>

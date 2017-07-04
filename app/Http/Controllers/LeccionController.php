@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Leccion;
 use App\Materia;
+use App\Seguimiento_leccion;
 use App\MaterialLeccion;
 use Illuminate\Http\Request;
 use DB;
@@ -190,5 +191,20 @@ class LeccionController extends Controller
 
         return view('lecciones.perfil')
             ->with('leccion', $leccion);
+    }
+
+    public function  finalizar(Request $request)
+    {
+        $id = $request->leccion_id;
+
+        $vista = new Seguimiento_leccion();
+        $vista->user_id = Auth::user()->id;
+        $vista->leccion_id = $request->leccion_id;
+        $vista->save();
+
+        $leccion = Leccion::find($id);
+
+        return redirect('perfil_modulo/'.$leccion->materia->modulo_id)->with('message','Lección finalizada :)');
+
     }
 }
