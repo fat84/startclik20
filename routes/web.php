@@ -134,6 +134,7 @@ Route::get('eliminar_material/{id}','MateriaController@destroymaterila');
 Route::get('leccion','LeccionController@index');
 Route::get('new_leccion','LeccionController@newleccion');
 Route::post('guardar_leccion','LeccionController@store');
+Route::post('finalizar_leccion','LeccionController@finalizar');
 Route::get('leccion/{id}/editar','LeccionController@edit');
 Route::post('editando_leccion/{id}','LeccionController@update');
 Route::get('eliminar_leccion/{id}','LeccionController@destroy');

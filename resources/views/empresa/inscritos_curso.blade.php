@@ -22,7 +22,7 @@
                         @foreach($cursos as $curso)
                             <h3>Curso: <b style="text-transform: uppercase;">{{$curso->nombre}}</b></h3>
                         @endforeach
-                        <span style="text-transform: uppercase;">ROL:  <b>{{Auth::user()->name}} {{Auth::user()->apellidos}}</b></span>
+                        <span style="text-transform: uppercase;">ROL:  <b>{{Auth::user()->rol}}</b></span>
                         <br>
                         <a href="{{ url()->previous() }}">Volver al Panel anterior</a>
 
@@ -37,7 +37,7 @@
 
                     <br>
 
-
+                    @if(Auth::user()->rol == 'empresa' or Auth::user()->rol == 'administrador')
                     <div class="col-md-6">
                         <div class="card" style="background-color: #F43F3A !important; border-radius: 15px !important;">
                             <div class="card-block">
@@ -62,6 +62,20 @@
                         </div>
                     </div>
 
+                        @elseif(Auth::user()->rol == 'instructor')
+
+                        <div class="col-md-12">
+                            <div class="card" style="background-color: #F43F3A !important; border-radius: 15px !important;">
+                                <div class="card-block">
+                                    <center>
+                                        <h3>Total de Inscritos al Curso</h3>
+                                        <h5><b>{{$contauser}}</b></h5>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endif
 
 
 
