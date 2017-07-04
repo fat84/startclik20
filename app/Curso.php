@@ -12,9 +12,20 @@ class Curso extends Model
 
     protected $table = 'cursos';
     protected $dates = ['deleted_at'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nombre', 'categoria_id', 'descripcion','imagen','video_promo','created_at','updated_at','empresa_id','deleted_at'
+    ];
 
-    protected $fillable = ['nombre', 'categoria_id', 'descripcion','imagen','video_promo','created_at','updated_at','empresa_id', 'deleted_at'];
-
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
 
     public function categoria()
     {

@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
-
+    <div class="mdk-drawer-layout__content">
+        @if($message=Session::has('message'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                {{Session::get('message')}}
+            </div>
+        @endif
             @if($message=Session::has('message'))
                 <script>
                     $( document ).ready(function() {
@@ -11,48 +18,47 @@
                         )});
                 </script>
             @endif
-            <div class="element-wrapper"><h6 class="element-header">Quices</h6>
-                <div class="element-box">
 
-                    <div class="row">
-                        @foreach($quiz as $quiz)
-                        <div class="col-md-6" style="padding-bottom: 20px; padding-right: 5px;">
-                            <div class="card">
-                                <div class="card-header" align="center" style="background-color: #0275d8; color: white;">
-                                    <h4 class="card-title">{{$quiz->titulo}}</h4>
+
+        <div class="media">
+            <div class="media-body media-middle">
+                <h1 class="page-heading h2">Quizes</h1>
+            </div>
+            <div class="media-right media-middle">
+                <a href="quiz_leccion_crear" class="btn btn-success">Nuevo Quiz <i class="material-icons btn__icon--right">add</i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card-columns">
+                    @foreach($quiz as $quiz)
+                        <div class="card">
+                            <div class="card-block media">
+                                <div class="media-left media-middle">
+                                    <a href="#">
+                                        <img src="{{asset('img/usuario/'.$quiz->imagen)}}" alt="Card image cap" width="80" class="rounded">
+                                    </a>
                                 </div>
-                                <div class="card-block">
-
-                                    <div class="form-group">
-
-                                        <div class="col-md-12" align="center">
-                                            <a href="#">
-                                                <img src="{{asset('img/usuario/'.$quiz->imagen)}}" alt="Card image cap" width="80" class="rounded">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="card-footer text-xs-center" align="center">
-                                   <!-- <a href="#" class="btn btn-primary btn-sm float-xs-left"><i class="material-icons btn__icon--left">playlist_add_check</i> Completados <span class="tag text-primary bg-white btn__icon--right">0</span></a>-->
-                                    <a  class="btn btn-primary btn-sm float-xs-left" href="quiz_leccion_editar/{{$quiz->id}}" class="btn btn-default btn-sm float-xs-right"><i class="material-icons btn__icon--left">edit</i> Asignar preguntas </a>
-                                    <div class="clearfix"></div>
+                                <div class="media-body media-middle">
+                                    <h4 class="card-title mb-0"><a href="fixed-instructor-review-quiz.html">{{$quiz->titulo}}</a></h4>
+                                    <!--<small class="text-muted">25 Completados</small>-->
                                 </div>
                             </div>
-
+                            <div class="card-footer text-xs-center">
+                                <a href="#" class="btn btn-primary btn-sm float-xs-left"><i class="material-icons btn__icon--left">playlist_add_check</i> Completados <span class="tag text-primary bg-white btn__icon--right">0</span></a>
+                                <a href="quiz_leccion_editar/{{$quiz->id}}" class="btn btn-default btn-sm float-xs-right"><i class="material-icons btn__icon--left">edit</i> Editar </a>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-                            @endforeach
-
-                    </div>
-
-
+                    @endforeach
                 </div>
-
             </div>
 
-            <a href="{{url('quiz_leccion_crear')}}"><button type="button" class="floated-chat-btn2" style="margin-right: 130px!important; background-color: green" data-toggle="modal" data-target="#exampleModalLong">
-                    Crear Quiz
-                </button></a>
+        </div>
+
+
+    </div>
+
 
 
 @stop

@@ -28,7 +28,7 @@
         <div class="card-block">
             <form action="{{url('quiz_leccion_actualizar/'.$quiz->id)}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-              <div class="col-md-12">
+              <div class="col-md-6">
                   <div class="form-group row">
                       <label for="course_title" class="col-sm-3 col-form-label"><b style="color:red;">* </b><b>Quiz titulo</b>:</label>
                       <div class="col-sm-9 col-md-6">
@@ -57,7 +57,7 @@
                   </div>
               </div>
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group row">
                         <label for="course_title" class="col-sm-4 col-form-label"><b>Nueva imagen</b></label>
                         <div class="form-group col-sm-8 col-md-3">
@@ -74,12 +74,10 @@
                         <button type="submit" class="btn btn-success">Guardar cambios lección</button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 
-    <br>
 
     <div class="card">
         <div class="card-header">
@@ -98,10 +96,8 @@
                                 <a href="#" class="btn btn-default nestable-handle"><i class="material-icons">menu</i></a>
                             </div>
                             <div class="media-body media-middle">
-                                {{$pregunta->titulo}} &nbsp;&nbsp;
-
+                                {{$pregunta->titulo}}
                             </div>
-                            <br>
                             <div class="media-right text-xs-right">
                                 <div style="width:100px">
                                     <a href="#" data-toggle="modal" data-target="#editQuiz{{$pregunta->id}}"  class="btn btn-primary btn-sm"><i class="material-icons">edit</i></a>
@@ -312,8 +308,6 @@ $contador7 = 1;
     </div>
 
 
-    <a href="{{url('quiz_leccion')}}"><button type="button" class="floated-chat-btn2" style="margin-right: 130px!important;" data-toggle="modal" data-target="#exampleModalLong">
-            Volver
-        </button></a>
+
 
 @stop

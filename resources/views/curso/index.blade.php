@@ -11,7 +11,7 @@
                 )});
         </script>
     @endif
-    <div class="element-wrapper"><h6 class="element-header">Creación de Empresas</h6>
+    <div class="element-wrapper"><h6 class="element-header">Creación de Cursos</h6>
         <div class="element-box">
         <h1 class="page-heading h2">CURSOS</h1>
         <div class="row">
@@ -25,10 +25,7 @@
                     </div>
                 @endif
 
-                <a type="button" href="{{url('new_curso')}}" class="btn btn-success">
-                    <i class="material-icons btn__icon--left">done</i> Crear Nuevo Curso
-                </a>
-
+                    <a href="{{url('new_curso')}}"  class="btn btn-primary">Crear nuevo curso</a>
 
                 <br>
                 <!-- Lessons -->
@@ -58,31 +55,59 @@
                         </tfoot>
                         <tbody>
                         @foreach($cursos as $curso)
-                            <tr>
-                                <td>{{$curso->nombre}}</td>
-                                <td>{{$curso->nombre_cate}}</td>
-                                <td>{{$curso->precio}}</td>
-                                <td><img src="{{asset('img/usuario/'.$curso->imagen)}}" style="width: 60px"></td>
-                                <td>
-                                    <video src="{{asset('video/curso/'.$curso->video_promo)}}" style="width: 200px"
-                                           autoplay></video>
-                                </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-success dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Opciones
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="perfil_curso/{{$curso->id}}">Perfil</a>
-                                            <a class="dropdown-item" href="instructor_curso/{{$curso->id}}">Asignar instructor</a>
-                                            <a class="dropdown-item" href="curso/{{$curso->id}}/editar">Editar</a>
-                                            <a class="dropdown-item" href="eliminar_curso/{{$curso->id}}">Eliminar</a>
-
+                            @if($curso->deleted_at != null)
+                                <tr>
+                                    <td style="color: red">{{$curso->nombre}}</td>
+                                    <td style="color: red">{{$curso->nombre_cate}}</td>
+                                    <td style="color: red">{{$curso->precio}}</td>
+                                    <td><img src="{{asset('img/usuario/'.$curso->imagen)}}" style="width: 60px"></td>
+                                    <td>
+                                        <video src="{{asset('video/curso/'.$curso->video_promo)}}" style="width: 200px"
+                                               autoplay></video>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Opciones
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="perfil_curso/{{$curso->id}}">Perfil</a>
+                                                <a class="dropdown-item" href="instructor_curso/{{$curso->id}}">Asignar instructor</a>
+                                                <a class="dropdown-item" href="curso/{{$curso->id}}/editar">Editar</a>
+                                                <a class="dropdown-item" href="habilitar_curso/{{$curso->id}}">Habilitar</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td >{{$curso->nombre}}</td>
+                                    <td>{{$curso->nombre_cate}}</td>
+                                    <td>{{$curso->precio}}</td>
+                                    <td><img src="{{asset('img/usuario/'.$curso->imagen)}}" style="width: 60px"></td>
+                                    <td>
+                                        <video src="{{asset('video/curso/'.$curso->video_promo)}}" style="width: 200px"
+                                               autoplay></video>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Opciones
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="perfil_curso/{{$curso->id}}">Perfil</a>
+                                                <a class="dropdown-item" href="instructor_curso/{{$curso->id}}">Asignar instructor</a>
+                                                <a class="dropdown-item" href="curso/{{$curso->id}}/editar">Editar</a>
+                                                <a class="dropdown-item" href="eliminar_curso/{{$curso->id}}">Inhabilitar</a>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
+
                         @endforeach
                         </tbody>
                     </table>
