@@ -33,6 +33,16 @@ class QuizController extends Controller
         return view('quiz.crear',compact('lecciones'));
     }
 
+    public function perfil($id)
+    {
+        //
+
+        $quiz= Quiz_leccion::find($id);
+
+        return view('quiz.perfil')
+            ->with('quiz', $quiz);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

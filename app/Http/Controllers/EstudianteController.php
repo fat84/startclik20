@@ -74,6 +74,24 @@ class EstudianteController extends Controller
         //
     }
 
+    public function perfil($id)
+    {
+        //
+
+        $estudiante = User::find($id);
+
+        $cursos = DB::table('cursos')
+            ->join('suscripcion', 'cursos.id', 'suscripcion.curso')
+            ->select('cursos.id', 'cursos.nombre', 'cursos.descripcion', 'cursos.imagen')
+            ->where('suscripcion.user_id', $id)
+            ->where('cursos.deleted_at', '=',null)
+            ->get();
+
+        return view('instructor.perfil_estudiante')
+            ->with('estudiante', $estudiante)
+            ->with('cursos', $cursos);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

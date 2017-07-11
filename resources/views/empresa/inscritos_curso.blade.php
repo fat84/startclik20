@@ -38,31 +38,31 @@
                     <br>
 
                     @if(Auth::user()->rol == 'empresa' or Auth::user()->rol == 'administrador')
-                    <div class="col-md-6">
-                        <div class="card" style="background-color: #F43F3A !important; border-radius: 15px !important;">
-                            <div class="card-block">
-                                <center>
-                                    <h3>Total de Inscritos al Curso</h3>
-                                    <h5><b>{{$contauser}}</b></h5>
-                                </center>
+                        <div class="col-md-6">
+                            <div class="card" style="background-color: #F43F3A !important; border-radius: 15px !important;">
+                                <div class="card-block">
+                                    <center>
+                                        <h3>Total de Inscritos al Curso</h3>
+                                        <h5><b>{{$contauser}}</b></h5>
+                                    </center>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="card" style="background-color: #BCC02D !important; border-radius: 15px !important;">
-                            <div class="card-block">
-                                <center>
-                                    <h3>Dinero Recaudado por el Curso</h3>
-                                    @foreach($curso2 as $curso1)
-                                        <h5><b>$ {{number_format($curso1->dinero, 0, ',', '.')}}</b></h5>
-                                    @endforeach
-                                </center>
+                        <div class="col-md-6">
+                            <div class="card" style="background-color: #BCC02D !important; border-radius: 15px !important;">
+                                <div class="card-block">
+                                    <center>
+                                        <h3>Dinero Recaudado por el Curso</h3>
+                                        @foreach($curso2 as $curso1)
+                                            <h5><b>$ {{number_format($curso1->dinero, 0, ',', '.')}}</b></h5>
+                                        @endforeach
+                                    </center>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                        @elseif(Auth::user()->rol == 'instructor')
+                    @elseif(Auth::user()->rol == 'instructor')
 
                         <div class="col-md-12">
                             <div class="card" style="background-color: #F43F3A !important; border-radius: 15px !important;">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        @endif
+                    @endif
 
 
 
@@ -101,6 +101,7 @@
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Fecha Vinculación</th>
+                                    <th>Opciones</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -110,6 +111,7 @@
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Fecha Vinculación</th>
+                                    <th>Opciones</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -120,6 +122,14 @@
                                         <td>{{$user2->name}}</td>
                                         <td>{{$user2->apellidos}}</td>
                                         <td>{{$user2->creacion}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{url('perfil_estudiante/'.$user2->id)}}">Perfil estudiante</a>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

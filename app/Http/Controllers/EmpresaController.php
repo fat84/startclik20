@@ -223,7 +223,7 @@ class EmpresaController extends Controller
     public function inscritos_curso($id)
     {
         $users = DB::table('suscripcion')
-            ->select('users.name', 'users.apellidos', 'users.tipo_documento', 'users.documento', 'suscripcion.created_at as creacion')
+            ->select('users.name', 'users.id', 'users.apellidos', 'users.tipo_documento', 'users.documento', 'suscripcion.created_at as creacion')
             ->join('users', 'suscripcion.user_id', 'users.id')
             ->join('cursos', 'suscripcion.curso', 'cursos.id')
             //->where('users.rol','=', 'usuario')

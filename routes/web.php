@@ -51,6 +51,9 @@ Route::post('ActualizarPerfil/{id}','UsuarioController@update');
 Route::get('seguridad','UsuarioController@ActualizarPass');
 Route::post('actualizarPass','UsuarioController@pass');
 
+//Perfil Estudiante
+Route::get('perfil_estudiante/{id}','EstudianteController@perfil');
+
 //Curso
 Route::get('curso','CursoController@index');
 Route::get('new_curso','CursoController@newcurso');
@@ -164,6 +167,7 @@ Route::get('quiz_leccion','QuizController@indexQuizLeccion');
 Route::get('quiz_leccion_crear','QuizController@createQuizLeccion');
 Route::post('quiz_leccion_guardar','QuizController@storeQuizLeccion');
 Route::get('quiz_leccion_editar/{id}','QuizController@editQuizLeccion');
+Route::get('perfil_quiz/{id}','QuizController@perfil');
 Route::post('quiz_leccion_actualizar/{id}','QuizController@updateQuizLeccion');
 
 //pregunta leccion

@@ -33,34 +33,35 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::all();
-        $cursos = DB::table('cursos');
         if (Auth::user()->rol == 'administrador') {
             $cursos = Curso::all();
-        } elseif (Auth::user()->rol == 'instructor') {
+        }
+        elseif (Auth::user()->rol == 'instructor')
+        {
             $cursos = DB::table('instructor_curso')
                 ->join('cursos', 'instructor_curso.curso_id', 'cursos.id')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
-                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as nombre_cate , cursos.imagen as imagen, cursos.video_promo as video_promo')
+                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as nombre_cate , cursos.imagen as imagen, cursos.video_promo as video_promo, cursos.deleted_at as deleted_at')
                 ->groupBy('cursos.id')
                 ->where('instructor_curso.instructor_id', '=', Auth::user()->id)
                 ->where('cursos.deleted_at', '=', null)
                 ->get();
-        } elseif (Auth::user()->rol == 'empresa') {
+        }
+        elseif (Auth::user()->rol == 'empresa')
+        {
             $cursos = DB::table('cursos')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
-                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as nombre_cate , cursos.imagen as imagen, cursos.video_promo as video_promo')
+                ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, categoria.nombre as nombre_cate , cursos.imagen as imagen, cursos.video_promo as video_promo, cursos.deleted_at as deleted_at')
                 ->groupBy('cursos.id')
                 ->where('cursos.empresa_id', '=', Auth::user()->id)
                 ->where('cursos.deleted_at', '=', null)
                 ->get();
         }
-    }
 
         /*$cursos = DB::table('cursos')
             ->join('categoria', 'cursos.categoria_id', '=', 'categoria.id')
             ->select('cursos.*', 'categoria.nombre as nombre_cate')
-            ->get();
+            ->get(); */
 
         return view('curso.index', compact('cursos'));
     }
@@ -165,6 +166,15 @@ class CursoController extends Controller
         $foro->user_id = Auth::user()->id;
         $foro->slug = str_replace(' ', '-', $request->nombre);
         $foro->save();
+
+        if  (Auth::user()->rol =='instructor')
+        {
+            $instructor = new Instructor_curso();
+            $instructor->instructor_id = Auth::user()->id;
+            $instructor->curso_id = $curso->id;
+            $instructor->save();
+
+        }
 
         return redirect('curso')->with('message','Curso creado correctamente');
 

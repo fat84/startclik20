@@ -76,8 +76,8 @@
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="inscritos/{{$curso->id}}">Lista de Inscritos</a>
-                                                <!--<a class="dropdown-item" href="eliminar_material_curso/{{$curso->id}}">Informe de Suscripciones</a> -->
+                                                    <a class="dropdown-item" href="{{url('inscritos/'.$curso->id)}}">Lista de Inscritos</a>
+                                                    <a class="dropdown-item" href="{{url('perfil_curso/'.$curso->id)}}">Perfil del Curso</a>
                                                 </div>
                                             </div>
                                         </td>
