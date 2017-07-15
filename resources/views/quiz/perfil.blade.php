@@ -37,8 +37,10 @@
                             ->get();
 
                         ?>
-                        <form action="{{url('quiz_preguta_actualizar_leccion/'.$quiz->id)}}" method="post">
+                        <form action="{{url('responder_quiz/')}}" method="post">
                             {{ csrf_field() }}
+
+                            <input hidden type="text" name="quiz_id" id="quiz_id" value="{{$quiz->id}}">
                         @foreach($preguntas as $pregunta)
 
                             <?php

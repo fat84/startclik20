@@ -24,13 +24,90 @@
 
                         <div class="form-group">
                             @foreach($cursos as $curso)
-                            <div align="center" class="col-md-12">
-                                <img align="center" src="{{asset('img/usuario/'.$curso->imagen)}}"
-                                     style="width: 200px">
-                            </div>
-                            <div class="col-md-12" style="max-height: 600px;overflow: scroll">
-                                <strong>Descripción:</strong> <span><?= $curso->descripcion; ?></span>
-                            </div>
+
+                                <div class="card" style="border-radius: 15px !important;">
+                                    <div class="card-header bg-white text-xs-center" align="center">
+                                        <h4 class="card-title" style="margin-bottom: 0rem !important;">{{$curso->nombre}}
+                                        </h4>
+                                        <br>
+                                        <small><?= $curso->descripcion; ?></small>
+                                    </div>
+                                    <br>
+
+                                    <div class="card-block" style="padding: 0rem !important; padding-bottom: 1rem !important;">
+                                        <div class="card-header bg-white" >
+                                            <?php
+                                            $lecciones = DB::table('lecciones')->select(DB::raw('lecciones.titulo as nombre, lecciones.descripcion as descripcion, lecciones.id as id'))
+                                                ->join('materia','lecciones.materia_id', '=', 'materia.id')
+                                                ->join('modulos', 'materia.modulo_id', 'modulos.id')
+                                                ->join('seguimiento_lecciones', 'lecciones.id', 'seguimiento_lecciones.leccion_id')
+                                                ->where('modulos.curso_id', '=', $curso->id)
+                                                ->get();
+
+                                            $ids = $lecciones->pluck('id');
+                                            $conta = count($lecciones);
+                                            ?>
+
+                                            @if($conta <= 0)
+                                                    <h5 style="color: #0275d8">No ha realizado ninguna lección de este curso</h5>
+                                                @else
+
+                                                    <h3 style="color: #0275d8">Lecciones realizadas</h3>
+
+                                                    <ul>
+                                                        @foreach($lecciones as $leccion)
+
+
+                                                            <li>
+                                                                <dl>
+                                                                    <dt>
+                                                            <span style="text-decoration:none; color: #1a50b7 !important;">
+                                                                <b>{{$leccion->nombre}}</b>
+                                                            </span>
+                                                                    </dt>
+
+                                                                </dl>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+
+                                                <?php
+                                                $quices = DB::table('quiz_leccion')->select(DB::raw('quiz_leccion.titulo as titulo, quiz_leccion.id as id'))
+                                                    ->join('lecciones','quiz_leccion.leccion_id', '=', 'lecciones.id')
+                                                    ->whereIn('quiz_leccion.leccion_id', $ids)
+                                                    ->get();
+                                                $conta = count($quices);
+
+                                                ?>
+
+                                                @if($conta <= 0)
+                                                    <h5 style="color: #0275d8">No ha realizado ninguna quiz de este curso</h5>
+                                                @else
+                                                <h3 style="color: #0275d8">Quices realizados</h3>
+
+                                        <ul>
+
+                                            @foreach($quices as $quiz)
+
+
+                                                <li>
+                                                    <dl>
+                                                        <dt>
+                                                            <a style="text-decoration:none; color: #1a50b7 !important;"
+                                                               href="{{url('perfil_quiz/'.$quiz->id)}}"><b>{{$quiz->titulo}}</b></a>
+                                                        </dt>
+
+                                                    </dl>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                                    @endif
+
+
+                                    </div>
+                                    </div>
+                                </div>
 
                              @endforeach
 
@@ -123,6 +200,7 @@
 
             </div>
         </div>
+
 
 
     </div>

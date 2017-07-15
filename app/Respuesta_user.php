@@ -9,7 +9,7 @@ class Respuesta_user extends Model
     //
     protected $table = 'respuesta_user';
     protected $fillable = [
-        'user_id', 'respuesta_id', 'correcta','score', 'created_at','updated_at'
+        'user_id', 'respuesta_id', 'correcta','score', 'quiz_id', 'created_at','updated_at'
     ];
 
     public function user()

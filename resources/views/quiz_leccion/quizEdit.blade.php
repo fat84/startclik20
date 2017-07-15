@@ -145,7 +145,7 @@
                         <h5 class="modal-title">Editar Pregunta {{$pregunta->titulo}}</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="{{url('quiz_preguta_actualizar_leccion/'.$pregunta->id)}}" id="editar" name="editar" method="post">
+                        <form action="{{url('quiz_pregunta_actualizar_leccion/'.$pregunta->id)}}" id="editar" name="editar" method="post">
                             {{ csrf_field() }}
                             <div class="form-group row">
                                 <label for="" class="col-form-label col-md-3">Titulo:</label>

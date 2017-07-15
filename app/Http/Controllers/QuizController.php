@@ -6,7 +6,11 @@ use App\Leccion;
 use App\Quiz_leccion;
 use App\Quiz_preguntas_leccion;
 use App\Quiz_respuesta_leccion;
+use App\Respuesta_user;
+use App\Seguimiento_quiz;
 use Illuminate\Http\Request;
+use Auth;
+use DB;
 use Storage;
 
 class QuizController extends Controller
@@ -235,7 +239,7 @@ class QuizController extends Controller
         return redirect('quiz_leccion_editar/'.$pregunta->quiz_leccion_id)->with('message','Pregunta Eliminada correctamente');
     }
 
-    public function quizpreguntaleccionactualzar(Request $request,$id){
+    public function quizpreguntaleccionactualizar(Request $request,$id){
 
         $quiz_pregunta = Quiz_preguntas_leccion::find($id);
         $quiz_pregunta->titulo = $request->titulo_pregunta;
@@ -296,7 +300,65 @@ class QuizController extends Controller
      * Quiz materia
      */
 
+    public function respuesta_quiz (Request $request){
 
+        $quiz = $request->quiz_id;
+
+
+        $preguntas = DB::table('quiz_leccion_pregunta')
+            ->where('quiz_leccion_id', '=', $quiz)
+            ->get();
+
+        $preguntas_id= $preguntas->pluck('id');
+
+
+        for ($i=0; $i < count($preguntas_id); $i++)
+        {
+            $t= 'opcion'.$preguntas_id[$i];
+            $respuesta[$i] = $request->$t;
+
+
+            $respuesta_user = new Respuesta_user();
+            $respuesta_user->user_id = Auth::user()->id;
+            $respuesta_user->respuesta_id = $respuesta[$i];
+
+            $correcta = DB::table('quiz_respuesta_leccion')
+                ->where('id', '=', $respuesta[$i])
+                ->where('verdadera', '=', 1)
+                ->get();
+
+            $sco = DB::table('quiz_respuesta_leccion')
+                ->selectRaw("quiz_respuesta_leccion.quiz_pregunta_leccion_id as leccion")
+                ->where('id', '=', $respuesta[$i])
+                ->first();
+
+            if(count($correcta) > 0)
+            {
+                $respuesta_user->correcta = 1;
+                $puntos = DB::table('quiz_leccion_pregunta')
+                    ->selectRaw("quiz_leccion_pregunta.score as puntaje")
+                    ->where('id', '=', $sco->leccion)
+                    ->first();
+                $respuesta_user->score = $puntos->puntaje;
+            }
+            else
+            {
+                $respuesta_user->correcta = 0;
+                $respuesta_user->score = 0;
+            }
+
+            $respuesta_user->quiz_id = $quiz;
+            $respuesta_user->save();
+        }
+
+       $seguimiento = new Seguimiento_quiz();
+        $seguimiento->user_id = Auth::user()->id;
+        $seguimiento->quiz_id = $quiz;
+        $seguimiento->save();
+
+
+        return redirect('perfil_quiz/'.$quiz)->with('message','Quiz Completado');
+    }
 
 
 }

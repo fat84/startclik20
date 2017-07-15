@@ -172,7 +172,7 @@ Route::post('quiz_leccion_actualizar/{id}','QuizController@updateQuizLeccion');
 
 //pregunta leccion
 Route::post('quiz_preguta_crear/{id}','QuizController@guardarPregunta');
-Route::post('quiz_preguta_actualizar_leccion/{id}','QuizController@quizpreguntaleccionactualzar');
+Route::post('quiz_pregunta_actualizar_leccion/{id}','QuizController@quizpreguntaleccionactualizar');
 //Route::post('quiz_preguta_informaion','QuizController@quiz_preguta_informaion');
 Route::get('eliminarPreguntaLeccion/{id}','QuizController@eliminarPreguntaLeccion');
 
@@ -206,3 +206,5 @@ Route::post('eliminarPostForo','ForoController@eliminarPostForo');
 Route::post('obsequiarCursoUsuario','EstudianteController@obsequioCurso');
 Route::post('chatOnline','ChatController@index');
 Route::post('chatUsuario','ChatController@create');
+
+Route::post('responder_quiz','QuizController@respuesta_quiz');
