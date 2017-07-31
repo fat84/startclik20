@@ -31,6 +31,7 @@ class EstudianteController extends Controller
             ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, cursos.video_promo as video_promo, categoria.nombre as categoria')
             ->groupBy('cursos.id')
             ->where('suscripcion.user_id', '=', Auth::user()->id)
+            ->where('cursos.deleted_at', '=', null)
             ->get();
         //Pluck me permite convertir en lista cierto campo
         $ids = $mis_cursos->pluck('id');
@@ -42,6 +43,7 @@ class EstudianteController extends Controller
                     ->join('categoria', 'cursos.categoria_id', 'categoria.id')
                     ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
                     ->groupBy('cursos.id')
+                    ->where('cursos.deleted_at', '=', null)
                     ->whereNotIn('cursos.id', $ids)
                     ->get();
 
@@ -51,6 +53,7 @@ class EstudianteController extends Controller
             $cursos_diferentes = DB::table('cursos')
                 ->join('categoria', 'cursos.categoria_id', 'categoria.id')
                 ->selectRaw('cursos.nombre as nombre, cursos.precio as precio, cursos.id as id, cursos.descripcion as descripcion, cursos.imagen as imagen, categoria.nombre as categoria')
+                ->where('cursos.deleted_at', '=', null)
                 ->groupBy('cursos.id')
                 ->get();
         }

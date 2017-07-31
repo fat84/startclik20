@@ -9,7 +9,7 @@ class Seguimiento_quiz extends Model
     //
     protected $table = 'seguimiento_quiz';
     protected $fillable = [
-        'user_id', 'quiz_id', 'created_at','updated_at'
+        'user_id', 'quiz_id','puntaje', 'created_at','updated_at'
     ];
 
     public function user()

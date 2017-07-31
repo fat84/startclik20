@@ -98,7 +98,9 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="perfil_curso/{{$curso->id}}">Perfil</a>
+                                                @if(Auth::user()->rol =='administrador')
                                                 <a class="dropdown-item" href="instructor_curso/{{$curso->id}}">Asignar instructor</a>
+                                                @endif
                                                 <a class="dropdown-item" href="curso/{{$curso->id}}/editar">Editar</a>
                                                 <a class="dropdown-item" href="eliminar_curso/{{$curso->id}}">Inhabilitar</a>
 

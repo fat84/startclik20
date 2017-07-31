@@ -73,9 +73,12 @@
                                                 @endif
 
                                                 <?php
-                                                $quices = DB::table('quiz_leccion')->select(DB::raw('quiz_leccion.titulo as titulo, quiz_leccion.id as id'))
+                                                $quices = DB::table('quiz_leccion')
+                                                    ->select(DB::raw('quiz_leccion.titulo as titulo, quiz_leccion.id as id, seguimiento_quiz.puntaje as puntaje'))
+                                                    ->join('seguimiento_quiz','quiz_leccion.id', '=', 'seguimiento_quiz.quiz_id')
                                                     ->join('lecciones','quiz_leccion.leccion_id', '=', 'lecciones.id')
                                                     ->whereIn('quiz_leccion.leccion_id', $ids)
+                                                    ->where('seguimiento_quiz.user_id', '=', $estudiante->id)
                                                     ->get();
                                                 $conta = count($quices);
 
@@ -95,7 +98,8 @@
                                                     <dl>
                                                         <dt>
                                                             <a style="text-decoration:none; color: #1a50b7 !important;"
-                                                               href="{{url('perfil_quiz/'.$quiz->id)}}"><b>{{$quiz->titulo}}</b></a>
+                                                               href="{{url('verificar_quiz/'.$quiz->id.'/'.$estudiante->id)}}"><b>{{$quiz->titulo}}</b></a><br>
+                                                            <b>Puntaje: {{$quiz->puntaje}}</b>
                                                         </dt>
 
                                                     </dl>

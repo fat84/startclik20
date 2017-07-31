@@ -297,12 +297,12 @@
                         <div class="form-group row">
                             <label for="" class="col-form-label col-md-3">Pregunta Score:</label>
                             <div class="col-md-4">
-                                <input onblur="comprobarQuiz()" id="score" required data-toggle="touch-spin" data-min="0" data-max="1000" data-step="5" type="number" name="score" class="form-control"/>
+                                <input  id="score" required data-toggle="touch-spin" data-min="0" data-max="1000" data-step="5" type="number" name="score" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-8 offset-md-3">
-                                <button onclick="comprobarQuiz()" type="submit" class="btn btn-success">Guardar</button>
+                                <button onclick="comprobarQuiz()"  class="btn btn-success">Guardar</button>
                             </div>
                         </div>
                     </form>
@@ -316,8 +316,8 @@
     <script>
         function comprobarQuiz() {
 
-            var clave1 = document.quiz.minimo.value;
-            var clave2 = document.pregunta.score.value;
+            var clave1 = parseInt(document.quiz.minimo.value);
+            var clave2 = parseInt(document.pregunta.score.value);
 
             if (clave2 > clave1) {
 
@@ -339,7 +339,7 @@
                     if (isConfirm) pregunta.submit();
                 });
 
-
+            $('#pregunta').submit();
 
             }
         }

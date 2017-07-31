@@ -11,7 +11,7 @@
                 )});
         </script>
     @endif
-    <div class="element-wrapper"><h6 class="element-header">Perfil de Quiz</h6>
+    <div class="element-wrapper"><h6 class="element-header">Comparación</h6>
         <div class="element-box">
 
         <div class="row">
@@ -37,8 +37,6 @@
                             ->get();
 
                         ?>
-                        <form action="{{url('responder_quiz/')}}" method="post">
-                            {{ csrf_field() }}
 
                             <input hidden type="text" name="quiz_id" id="quiz_id" value="{{$quiz->id}}">
                         @foreach($preguntas as $pregunta)
@@ -53,18 +51,34 @@
                             <?php
                             $opciones = DB::table('quiz_respuesta_leccion')
                                 ->where('quiz_pregunta_leccion_id', '=', $pregunta->id)
+                                ->where('quiz_respuesta_leccion.verdadera', '=', 1)
+                                ->get();
+                            $i=0;
+                            ?>
+
+                            <?php
+                            $opciones2 = DB::table('quiz_respuesta_leccion')
+                                ->join('respuesta_user', 'quiz_respuesta_leccion.id', 'respuesta_user.respuesta_id')
+                                ->selectRaw("quiz_respuesta_leccion.respuesta as respuesta")
+                                ->where('quiz_respuesta_leccion.quiz_pregunta_leccion_id', '=', $pregunta->id)
+                                ->where('respuesta_user.user_id', '=', $user)
                                 ->get();
                             $i=0;
                             ?>
                             @foreach($opciones as $opcion)
 
-                                <input required type="radio" name="opcion{{$opcion->quiz_pregunta_leccion_id}}" value="{{$opcion->id}}">{{$opcion->respuesta}}<br>
+                                <b style="color: green">Respuesta Correcta: {{$opcion->respuesta}}</b><br>
 
                                 @endforeach
+
+                            @foreach($opciones2 as $opcion2)
+
+                                <b>Tu Respuesta: {{$opcion2->respuesta}}</b><br>
+
+                            @endforeach
                         </div>
                             @endforeach
-                            <button type="submit" class="btn btn-block btn-success">Guardar Respuestas</button>
-                        </form>
+
 
                     </div>
                 </div>

@@ -47,6 +47,17 @@ class QuizController extends Controller
             ->with('quiz', $quiz);
     }
 
+    public function comparativo($id, $user)
+    {
+        //
+        $id_user= $user;
+        $quiz= Quiz_leccion::find($id);
+
+        return view('quiz.comparativo')
+            ->with('quiz', $quiz)
+        ->with('user', $id_user);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -311,7 +322,7 @@ class QuizController extends Controller
 
         $preguntas_id= $preguntas->pluck('id');
 
-
+        $total_score=0;
         for ($i=0; $i < count($preguntas_id); $i++)
         {
             $t= 'opcion'.$preguntas_id[$i];
@@ -340,6 +351,7 @@ class QuizController extends Controller
                     ->where('id', '=', $sco->leccion)
                     ->first();
                 $respuesta_user->score = $puntos->puntaje;
+                $total_score += $respuesta_user->score;
             }
             else
             {
@@ -354,6 +366,7 @@ class QuizController extends Controller
        $seguimiento = new Seguimiento_quiz();
         $seguimiento->user_id = Auth::user()->id;
         $seguimiento->quiz_id = $quiz;
+        $seguimiento->puntaje = $total_score;
         $seguimiento->save();
 
 

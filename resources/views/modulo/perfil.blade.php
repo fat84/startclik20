@@ -110,19 +110,52 @@
 
                                 $ids = $lecciones->pluck('id');
                                 ?>
-                                @foreach($lecciones as $leccion)
+
+                                @if(Auth::user()->rol != 'usuario')
+                                    @foreach($lecciones as $leccion)
 
 
-                                    <li>
-                                        <dl>
-                                            <dt>
-                                                <a style="text-decoration:none; color: #1a50b7 !important;"
-                                                   href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}}</b></a>
-                                            </dt>
+                                        <li>
+                                            <dl>
+                                                <dt>
+                                                    <a style="text-decoration:none; color: #1a50b7 !important;"
+                                                       href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}}</b></a>
+                                                </dt>
 
-                                        </dl>
-                                    </li>
-                                @endforeach
+                                            </dl>
+                                        </li>
+                                    @endforeach
+                                @elseif(Auth::user()->rol == 'usuario')
+
+                                    @foreach($lecciones as $leccion)
+
+
+                                        <li>
+                                            <dl>
+                                                <?php
+
+                                                $visto2 = DB::table('seguimiento_lecciones')
+                                                    ->where('seguimiento_lecciones.leccion_id', '=', $leccion->id)
+                                                    ->where('seguimiento_lecciones.user_id', '=', Auth::user()->id)
+                                                    ->count();
+
+                                                ?>
+
+                                                <dt>
+                                                    @if($visto2 <= 0)
+                                                        <a style="text-decoration:none; color: #1a50b7 !important;"
+                                                           href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}}</b></a>
+                                                    @elseif($visto2 > 0)
+                                                        <a style="text-decoration:none; color: #c55959 !important;"
+                                                           href="{{url('perfil_leccion/'.$leccion->id)}}"><b>{{$leccion->nombre}} -- VISTO</b></a>
+                                                    @endif
+                                                </dt>
+
+                                            </dl>
+                                        </li>
+                                    @endforeach
+
+                                    @endif
                             </ul>
 
                             <h3 style="color: #0275d8">Quices</h3>
@@ -134,6 +167,7 @@
                                     ->whereIn('quiz_leccion.leccion_id', $ids)
                                     ->get();
                                 ?>
+                                @if(Auth::user()->rol != 'usuario')
                                 @foreach($quices as $quiz)
 
 
@@ -147,6 +181,42 @@
                                         </dl>
                                     </li>
                                 @endforeach
+                                    @elseif(Auth::user()->rol == 'usuario')
+                                        @foreach($quices as $quiz)
+
+
+                                            <li>
+                                                <dl>
+                                                    <dt>
+                                                        <?php
+
+                                                        $visto = DB::table('quiz_leccion')
+                                                            ->select(DB::raw('quiz_leccion.titulo as titulo, quiz_leccion.id as id'))
+                                                            ->join('seguimiento_quiz','quiz_leccion.id', '=', 'seguimiento_quiz.quiz_id')
+                                                            ->join('lecciones','quiz_leccion.leccion_id', '=', 'lecciones.id')
+                                                            ->where('seguimiento_quiz.quiz_id', '=', $quiz->id)
+                                                            ->where('seguimiento_quiz.user_id', '=', Auth::user()->id)
+                                                            ->count();
+
+                                                        ?>
+                                                        @if($visto <= 0)
+
+                                                                <a style="text-decoration:none; color: #1a50b7 !important;"
+                                                                   href="{{url('perfil_quiz/'.$quiz->id)}}"><b>{{$quiz->titulo}}</b></a>
+
+
+
+                                                            @elseif($visto > 0)
+                                                                <b style="color: #c55959 !important;">{{$quiz->titulo}} -- VISTO</b>
+                                                               @endif
+                                                    </dt>
+
+                                                </dl>
+                                            </li>
+                                        @endforeach
+
+                                    @endif
+
                             </ul>
 
                             <h3 style="color: #0275d8">Material de Apoyo</h3>
