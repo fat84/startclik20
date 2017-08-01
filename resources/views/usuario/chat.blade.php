@@ -3,7 +3,6 @@
         var parametros = {
         };
         $(".chatUsuario").hide();
-
         var ruta = '/chatOnline';
         $.ajax({
             url: ruta,
@@ -20,7 +19,6 @@
                                      '<a href="#" style="color: #0c0c0c" onclick="abrirChat(\''+b[i].id+'\')">'+b[i].name+'<br>'+b[i].apellidos+'('+b[i].rol+')</a>' +
                                 '</li>';
                 }
-
                 $('#usuariosOnline').html(usuarios);
             }
         });
@@ -48,11 +46,35 @@
                         '<a href="#" style="color: #0c0c0c" onclick="abrirChat(\''+b[i].id+'\')">'+b[i].name+'<br>'+b[i].apellidos+'('+b[i].rol+')</a>' +
                         '</li>';
                 }
-
                 $('#usuariosOnline').html(usuarios);
             }
         });
 
+    }
+
+    function cerrarChat () {
+        var parametros = {
+        };
+        $(".chatUsuario").hide();
+        var ruta = '/chatOnline';
+        $.ajax({
+            url: ruta,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'POST',
+            dataType: 'json',
+            data: parametros,
+            success: function (data) {
+                const a = data.usuariosOnline;
+                b = a;
+                usuarios = "";
+                for(var i = 0 in b){
+                    usuarios += '<li style="list-style-type: disc;color: greenyellow">' +
+                        '<a href="#" style="color: #0c0c0c" onclick="abrirChat(\''+b[i].id+'\')">'+b[i].name+'<br>'+b[i].apellidos+'('+b[i].rol+')</a>' +
+                        '</li>';
+                }
+                $('#usuariosOnline').html(usuarios);
+            }
+        });
     }
 
 </script>
@@ -101,7 +123,7 @@
 <div class="floated-chat-btn"><i class="os-icon os-icon-mail-07"></i><span>Chat</span></div>
 <div class="floated-chat-w">
     <div class="floated-chat-i">
-        <div class="chat-close"><i class="os-icon os-icon-close"></i></div>
+        <div class="chat-close" onclick="cerrarChat()"><i class="os-icon os-icon-close"></i></div>
         <div class="chat-head">
             <div class="conectadosUsuarios">
                 <p style="text-transform: uppercase;font-weight: bold">conectados</p>

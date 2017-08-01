@@ -31,12 +31,16 @@ class ChatController extends Controller
     public function create(Request $request)
     {
         $usuario = User::find($request->idUsuario);
+        $user = \Auth::user()->id;
+        $chat = Chat::where('user_receptor','=',$request->idUsuario)->where('user_remitente','=',$user)->get();
 
        // $chat = Chat::where('');
         return response()->json([
             'usuario'=>$usuario,
+            'chat'=>$chat
           //  'chat'=>$chat
         ]);
+
     }
 
     /**

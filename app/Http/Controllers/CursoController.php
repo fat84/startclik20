@@ -133,6 +133,7 @@ class CursoController extends Controller
 
         $curso = new Curso();
         $curso->nombre = $request->nombre;
+        $curso->codigo = $request->codigo;
         $curso->categoria_id = $request->categoria_id;
         $curso->descripcion = $request->descripcion;
 

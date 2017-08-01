@@ -209,3 +209,19 @@ Route::post('chatOnline','ChatController@index');
 Route::post('chatUsuario','ChatController@create');
 
 Route::post('responder_quiz','QuizController@respuesta_quiz');
+
+//chat
+Route::get('chatUsers',function (){
+    return view('chat.chat');
+});
+
+
+
+//CERTIFICADOS
+Route::get('Listacertificados','CertificadoController@index');
+Route::get('CrearCertificados','CertificadoController@create');
+Route::post('guardar_certificado','CertificadoController@store');
+Route::get('editar_certificado/{id}','CertificadoController@edit');
+Route::get('editar_certificado/{id}','CertificadoController@edit');
+Route::post('editando_certificado/{id}','CertificadoController@update');
+

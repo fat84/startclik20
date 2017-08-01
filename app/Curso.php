@@ -18,7 +18,7 @@ class Curso extends Model
      * @var array
      */
     protected $fillable = [
-        'nombre', 'categoria_id', 'descripcion','imagen','video_promo','created_at','updated_at','empresa_id','deleted_at'
+        'nombre', 'categoria_id', 'descripcion','imagen','video_promo','created_at','updated_at','empresa_id','deleted_at','codigo'
     ];
 
     /**
@@ -43,6 +43,9 @@ class Curso extends Model
 
     public function instructor_curso(){
         return $this->belongsToMany('App\Instructor_cuso');
+    }
+    public function certificado(){
+        return $this->hasMany('App\Certificados','curso_id','id');
     }
 
 }

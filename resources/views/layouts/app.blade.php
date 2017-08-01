@@ -41,6 +41,17 @@
 
 </head>
 <body>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '7325304db73e1dfeeef761206c26abb388fc02be';
+    window.smartsupp||(function(d) {
+        var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+        s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+        c.type='text/javascript';c.charset='utf-8';c.async=true;
+        c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+</script>
 <div class="all-wrapper menu-side with-side-panel">
     <div class="layout-w">
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
@@ -153,7 +164,7 @@
                             </div>
                             <span>Mi perfil</span></a>
                     </li>
-                    <li><a href="#">
+                    <li><a href="{{url('Listacertificados')}}">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-window-content"></div>
                             </div>
@@ -341,7 +352,7 @@
                             </div>
                             <span>Mi perfil</span></a>
                     </li>
-                    <li><a href="#">
+                    <li><a href="{{url('Listacertificados')}}">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-window-content"></div>
                             </div>
@@ -390,7 +401,7 @@
                     <div class="container-fluid">
                         @yield('content')
 
-                        @include('usuario.chat')
+                     {{--   @include('usuario.chat')--}}
                     </div>
                 </div>
             </div>

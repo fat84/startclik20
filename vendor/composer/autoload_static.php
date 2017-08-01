@@ -398,6 +398,7 @@ class ComposerStaticInitbdf594e6fd92193d94e4b8f11f74dcd9
     public static $classMap = array (
         'App\\Carrito' => __DIR__ . '/../..' . '/app/Carrito.php',
         'App\\Categoria' => __DIR__ . '/../..' . '/app/Categoria.php',
+        'App\\Certificados' => __DIR__ . '/../..' . '/app/Certificados.php',
         'App\\Chat' => __DIR__ . '/../..' . '/app/Chat.php',
         'App\\Ciudad' => __DIR__ . '/../..' . '/app/Ciudad.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -414,6 +415,7 @@ class ComposerStaticInitbdf594e6fd92193d94e4b8f11f74dcd9
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\CarritoController' => __DIR__ . '/../..' . '/app/Http/Controllers/CarritoController.php',
         'App\\Http\\Controllers\\CategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriaController.php',
+        'App\\Http\\Controllers\\CertificadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/CertificadoController.php',
         'App\\Http\\Controllers\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CursoController' => __DIR__ . '/../..' . '/app/Http/Controllers/CursoController.php',

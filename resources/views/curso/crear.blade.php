@@ -22,6 +22,15 @@
                        <form id="formu" name="formu" action="guardar_curso" method="post" class="form-horizontal" accept-charset="UTF-8" enctype="multipart/form-data">
                            {{ csrf_field() }}
                            <div class="form-group">
+                               <label for="nombre"><b style="color:red;">* </b><b>Codigo del Curso</b></label>
+                               <input required name="codigo" value="{{old('codigo')}}" type="text" class="form-control" placeholder="Digite el codigo del curso">
+                               @if ($errors->has('codigo'))
+                                   <span class="help-block">
+                                        <strong>{{ $errors->first('codigo') }}</strong>
+                                    </span>
+                               @endif
+                           </div>
+                           <div class="form-group">
                                <label for="nombre"><b style="color:red;">* </b><b>Nombre del Curso</b></label>
                                <input required name="nombre" value="{{old('nombre')}}" type="text" class="form-control" placeholder="Digite el nombre del curso">
                                @if ($errors->has('nombre'))
