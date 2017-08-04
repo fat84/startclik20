@@ -106,6 +106,8 @@
                                             <th>Fecha</th>
                                             <th>Curso</th>
                                             <th>Tipo</th>
+                                            <th>Certificado</th>
+                                            <th>Certificar</th>
                                         </tr>
                                         </thead>
                                         <tfoot>
@@ -113,6 +115,8 @@
                                             <th>Fecha</th>
                                             <th>Curso</th>
                                             <th>Tipo</th>
+                                            <th>certificado</th>
+                                            <th>Certificar</th>
                                         </tr>
                                         </tfoot>
                                         <tbody>
@@ -125,7 +129,39 @@
                                             @else
                                                 <th>GRATIS</th>
                                             @endif
+                                            <th>Sin certificar</th>
+                                            <th><a onclick="certificarUsuario{{$cursoUsuario->idCursos}}()" class="btn btn-success">Certificar</a></th>
                                         </tr>
+
+                                            <script>
+                                                function certificarUsuario{{$cursoUsuario->idCursos}}() {
+                                                    swal({
+                                                            title: "¿Esta seguro?",
+                                                            text: "Desea certificar este usuario",
+                                                            type: "warning",
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: "#DD6B55",
+                                                            confirmButtonText: "Si, certificar!",
+                                                            cancelButtonText: "No, Cancelar!",
+                                                            closeOnConfirm: false,
+                                                            closeOnCancel: false
+                                                        },
+                                                        function(isConfirm){
+                                                            if (isConfirm) {
+                                                                swal("Certificado!", "Usuario certificado", "success");
+                                                                $('#certificarUsuario{{$cursoUsuario->idCursos}}').submit();
+
+                                                            } else {
+                                                                swal("Cancelado", "Ha sido cancelado :)", "error");
+                                                            }
+                                                        });
+                                                }
+                                            </script>
+                                        <form method="post" action="{{url('certificarUsuario')}}" id="certificarUsuario{{$cursoUsuario->idCursos}}">
+                                            <input hidden value="{{$cursoUsuario->idCursos}}" name="cursoCertificar">
+                                            <input hidden value="{{$usuario->id}}" name="usuarioCertificar">
+                                        </form>
+
                                         @endforeach
                                         </tbody>
                                     </table>
@@ -138,6 +174,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

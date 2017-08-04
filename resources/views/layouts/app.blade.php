@@ -164,12 +164,24 @@
                             </div>
                             <span>Mi perfil</span></a>
                     </li>
-                    <li><a href="{{url('Listacertificados')}}">
-                            <div class="icon-w">
-                                <div class="os-icon os-icon-window-content"></div>
-                            </div>
-                            <span>Certificados</span></a>
-                    </li>
+                    @if(Auth::user()->rol == 'usuario')
+                        <li><a href="{{url('certificadosUsuario')}}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-window-content"></div>
+                                </div>
+                                <span>Mis Certificados</span></a>
+                        </li>
+                    @elseif(Auth::user()->rol =='empresa')
+                        {{--no hay nada--}}
+                    @else
+                        <li><a href="{{url('Listacertificados')}}">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-window-content"></div>
+                                </div>
+                                <span>Certificados</span></a>
+                        </li>
+                    @endif
+
                     <!--  <li class="has-sub-menu"><a href="#">
                               <div class="icon-w">
                                   <div class="os-icon os-icon-user-male-circle"></div>

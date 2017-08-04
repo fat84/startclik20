@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Certificado_usuario;
 use App\Ciudad;
 use App\Curso;
 use App\Departamento;
@@ -206,5 +207,15 @@ class EstudianteController extends Controller
     {
         User::destroy($id);
         return redirect('usuarios')->with('message', 'Usuarios Eliminado correctamente');
+    }
+
+    public function certificarUsuario(Request $request){
+
+        $certificado_usuario = new Certificado_usuario;
+        $certificado_usuario->curso_id = $request->cursoCertificar;
+        $certificado_usuario->user_id = $request->usuarioCertificar;
+        $certificado_usuario->save();
+
+        return redirect('usuario/'.$request->usuarioCertificar.'/edit')->with('message','Usuario certificado correctamente');
     }
 }

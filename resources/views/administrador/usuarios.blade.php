@@ -121,8 +121,8 @@
                                         <table id="dataTable2" class="table table-striped table-lightfont" cellspacing="0" width="100%">
                                             <thead>
                                         <tr>
-                                            <th>Id</th>
                                             <th>Creado</th>
+                                            <th>documento</th>
                                             <th>Nombre</th>
                                             <th>Apellidos</th>
                                             <th>Email</th>
@@ -132,8 +132,8 @@
                                         </thead>
                                         <tfoot>
                                         <tr>
-                                            <th>Id</th>
                                             <th>Creado</th>
+                                            <th>documento</th>
                                             <th>Nombre</th>
                                             <th>Apellidos</th>
                                             <th>Email</th>
@@ -144,18 +144,52 @@
                                         <tbody>
                                         @foreach($usuarios as $usuario)
                                             <tr>
-                                                <td>{{$usuario->id}}</td>
                                                 <td>{{$usuario->created_at}}</td>
+                                                <td>{{$usuario->documento}}</td>
                                                 <td>{{$usuario->name}}</td>
                                                 <td>{{$usuario->apellidos}}</td>
                                                 <td>{{$usuario->email}}</td>
                                                 <td>{{$usuario->telefono}}</td>
                                                 <td>
-                                                    {!! link_to_route('usuario.edit', $title = 'Editar', $parameters = $usuario->id, $attributes = ['class'=>'btn btn-primary block']) !!}
-                                                    <br><br>
-                                                    {!!Form::open(['route'=>['usuario.destroy',$usuario->id],'method'=>'DELETE'])!!}
-                                                    {!! Form::submit('Eliminar',['class'=>'btn btn-danger block']) !!}
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Acción
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="usuario/{{$usuario->id}}/edit">Editar</a>
+                                                            <a class="dropdown-item"  onclick="eliminarUsuario{{$usuario->id}}()">
+                                                                Eliminar
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        function eliminarUsuario{{$usuario->id}}() {
+                                                            swal({
+                                                                    title: "¿Esta seguro?",
+                                                                    text: "Desea eliminar este usuario",
+                                                                    type: "warning",
+                                                                    showCancelButton: true,
+                                                                    confirmButtonColor: "#DD6B55",
+                                                                    confirmButtonText: "Si, eliminar!",
+                                                                    cancelButtonText: "No, Cancelar!",
+                                                                    closeOnConfirm: false,
+                                                                    closeOnCancel: false
+                                                                },
+                                                                function(isConfirm){
+                                                                    if (isConfirm) {
+                                                                        swal("Anulada!", "Usuario eliminado", "success");
+                                                                        $('#eliminarUsuario{{$usuario->id}}').submit();
+
+                                                                    } else {
+                                                                        swal("Cancelado", "Ha sido cancelado :)", "error");
+                                                                    }
+                                                                });
+                                                        }
+                                                    </script>
+
+                                                    {!!Form::open(['route'=>['usuario.destroy',$usuario->id],'method'=>'DELETE','id'=>'eliminarUsuario'.$usuario->id])!!}
                                                     {!! Form::close() !!}
+
                                                 </td>
                                             </tr>
                                         @endforeach

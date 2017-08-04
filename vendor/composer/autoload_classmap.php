@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Carrito' => $baseDir . '/app/Carrito.php',
     'App\\Categoria' => $baseDir . '/app/Categoria.php',
+    'App\\Certificado_usuario' => $baseDir . '/app/Certificado_usuario.php',
     'App\\Certificados' => $baseDir . '/app/Certificados.php',
     'App\\Chat' => $baseDir . '/app/Chat.php',
     'App\\Ciudad' => $baseDir . '/app/Ciudad.php',
@@ -1128,8 +1129,8 @@ return array(
     'Illuminate\\Auth\\AuthServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php',
     'Illuminate\\Auth\\Authenticatable' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Authenticatable.php',
     'Illuminate\\Auth\\AuthenticationException' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/AuthenticationException.php',
+    'Illuminate\\Auth\\Console\\AuthMakeCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Console/AuthMakeCommand.php',
     'Illuminate\\Auth\\Console\\ClearResetsCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Console/ClearResetsCommand.php',
-    'Illuminate\\Auth\\Console\\MakeAuthCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Console/MakeAuthCommand.php',
     'Illuminate\\Auth\\CreatesUserProviders' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/CreatesUserProviders.php',
     'Illuminate\\Auth\\DatabaseUserProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/DatabaseUserProvider.php',
     'Illuminate\\Auth\\EloquentUserProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php',

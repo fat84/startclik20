@@ -225,3 +225,5 @@ Route::get('editar_certificado/{id}','CertificadoController@edit');
 Route::get('editar_certificado/{id}','CertificadoController@edit');
 Route::post('editando_certificado/{id}','CertificadoController@update');
 
+Route::post('certificarUsuario','EstudianteController@certificarUsuario');
+
